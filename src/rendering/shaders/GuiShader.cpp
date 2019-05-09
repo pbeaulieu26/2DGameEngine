@@ -1,6 +1,6 @@
+#include "pch.h"
 #include "GuiShader.h"
 
-#include <vector>
 
 namespace
 {

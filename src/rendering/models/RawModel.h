@@ -1,5 +1,4 @@
-#ifndef RAW_MODEL_H
-#define RAW_MODEL_H
+#pragma once
 
 #include <glad/glad.h>
 
@@ -15,5 +14,4 @@ public:
 
 };
 
-#endif // !RAW_MODEL_H
 

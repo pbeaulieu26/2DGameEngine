@@ -1,9 +1,8 @@
-#ifndef SHADER_PROGRAM_H
-#define SHADER_PROGRAM_H
+#pragma once
 
-#include <vector>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
+
 
 class ShaderProgram
 {
@@ -35,5 +34,3 @@ private:
     GLuint m_fragmentShaderID;
 
 };
-
-#endif // !SHADER_PROGRAM_H

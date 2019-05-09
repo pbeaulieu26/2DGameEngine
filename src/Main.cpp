@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "rendering/display/DisplayManager.h"
 #include "rendering/textures/TextureLoader.h"
 #include "rendering/models/VertexObjectLoader.h"
@@ -6,6 +7,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;

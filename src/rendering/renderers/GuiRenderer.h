@@ -4,6 +4,7 @@
 #include "rendering/models/VertexObjectLoader.h"
 #include "rendering/entities/GuiEntity.h"
 
+
 class GuiRenderer
 {
 public:

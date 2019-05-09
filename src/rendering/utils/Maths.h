@@ -1,7 +1,7 @@
-#ifndef MATHS_H
-#define MATHS_H
+#pragma once
 
 #include <glm/glm.hpp>
+
 
 class Maths
 {
@@ -12,6 +12,4 @@ public:
     static glm::mat4 createTransformationMatrix(const glm::vec2& translation, const glm::vec2& scale);
 
 };
-
-#endif // !MATHS_H
 

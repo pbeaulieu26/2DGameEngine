@@ -1,7 +1,9 @@
+#include "pch.h"
 #include "GuiRenderer.h"
 #include "rendering/utils/Maths.h"
 
 #include <glad/glad.h>
+
 
 GuiRenderer::GuiRenderer(VertexObjectLoader& vertexObjectLoader)
 {

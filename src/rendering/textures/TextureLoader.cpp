@@ -1,7 +1,7 @@
+#include "pch.h"
 #include "TextureLoader.h"
 #include "rendering/stb/stb_image.h"
 
-#include <iostream>
 
 TextureLoader::~TextureLoader()
 {

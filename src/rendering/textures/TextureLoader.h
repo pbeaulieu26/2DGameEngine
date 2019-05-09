@@ -1,8 +1,7 @@
-#ifndef TEXTURE_LOADER_H
-#define TEXTURE_LOADER_H
+#pragma once
 
-#include <vector>
 #include <glad/glad.h>
+
 
 class TextureLoader
 {
@@ -17,5 +16,4 @@ private:
 
 };
 
-#endif // !TEXTURE_LOADER_H
 

@@ -1,5 +1,4 @@
-#ifndef DISPLAY_MANAGER_H
-#define DISPLAY_MANAGER_H
+#pragma once
 
 struct GLFWwindow;
 
@@ -34,4 +33,3 @@ private:
     static InputCallback* m_inputCallback;
 };
 
-#endif // !DISPLAY_MANAGER_H

@@ -1,9 +1,8 @@
+#include "pch.h"
 #include "ShaderProgram.h"
 
-#include <string>
-#include <iostream>
-#include <fstream>
 #include <glm/gtc/type_ptr.hpp>
+
 
 ShaderProgram::ShaderProgram(const char* vertexFile, const char * fragmentFile, const std::vector<const GLchar *>& attributes)
 {
