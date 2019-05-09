@@ -641,14 +641,11 @@
     <Library Include="lib\SDL\SDL2test.lib" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <ClCompile Include="src\rendering\models\RawModel.cpp" />
     <ClCompile Include="src\rendering\models\VertexObjectLoader.cpp" />
     <ClCompile Include="src\rendering\renderers\Renderer2D.cpp" />
     <ClCompile Include="src\rendering\shaders\Shader2D.cpp" />
-=======
     <ClCompile Include="include\glm\detail\glm.cpp" />
->>>>>>> da09606cd6042c870cff7df0fbbd924626e1c967
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rendering\display\DisplayManager.cpp" />
     <ClCompile Include="src\rendering\glad\glad.c" />
