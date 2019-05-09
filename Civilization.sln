@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Civilization", "Civilization.vcxproj", "{B54AC46E-D1E2-42A1-849B-EA92411E927E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Debug|x64.ActiveCfg = Debug|x64
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Debug|x64.Build.0 = Debug|x64
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Debug|x86.ActiveCfg = Debug|Win32
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Debug|x86.Build.0 = Debug|Win32
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Release|x64.ActiveCfg = Release|x64
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Release|x64.Build.0 = Release|x64
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Release|x86.ActiveCfg = Release|Win32
+		{B54AC46E-D1E2-42A1-849B-EA92411E927E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27C991B5-18C1-4E19-A65E-D2E17545F729}
+	EndGlobalSection
+EndGlobal
