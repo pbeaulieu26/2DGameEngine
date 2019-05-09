@@ -6,8 +6,6 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-using namespace std;
-
 GLFWwindow* DisplayManager::m_window = nullptr;
 InputCallback* DisplayManager::m_inputCallback = nullptr;
 
@@ -21,7 +19,7 @@ int DisplayManager::createDisplay(int width, int height)
     m_window = glfwCreateWindow(width, height, "GameEngine", NULL, NULL);
     if (m_window == NULL)
     {
-        cout << "Failed to create GLFW window" << endl;
+        std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return MANAGER_ERROR;
     }

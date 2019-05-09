@@ -15,6 +15,8 @@ class DisplayManager
 {
 public:
 
+    DisplayManager() = delete;
+
     static int createDisplay(int width, int height);
     static void updateDisplay();
     static void closeDisplay();
@@ -24,7 +26,6 @@ public:
 
 private:
 
-    DisplayManager();
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 private:

@@ -247,9 +247,16 @@
     <ClInclude Include="include\SDL\SDL_version.h" />
     <ClInclude Include="include\SDL\SDL_video.h" />
     <ClInclude Include="include\SDL\SDL_vulkan.h" />
+    <ClInclude Include="src\rendering\models\RawModel.h" />
+    <ClInclude Include="src\rendering\models\VertexObjectLoader.h" />
+    <ClInclude Include="src\rendering\renderers\Renderer2D.h" />
+    <ClInclude Include="src\rendering\shaders\Shader2D.h" />
     <ClInclude Include="src\rendering\display\DisplayManager.h" />
+    <ClInclude Include="src\rendering\shaders\ShaderProgram.h" />
     <ClInclude Include="src\rendering\stb\stb_image.h" />
+    <ClInclude Include="src\rendering\textures\Texture.h" />
     <ClInclude Include="src\rendering\textures\TextureLoader.h" />
+    <ClInclude Include="src\rendering\utils\Maths.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />
@@ -258,13 +265,24 @@
     <Library Include="lib\SDL\SDL2test.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\rendering\models\RawModel.cpp" />
+    <ClCompile Include="src\rendering\models\VertexObjectLoader.cpp" />
+    <ClCompile Include="src\rendering\renderers\Renderer2D.cpp" />
+    <ClCompile Include="src\rendering\shaders\Shader2D.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rendering\display\DisplayManager.cpp" />
     <ClCompile Include="src\rendering\glad\glad.c" />
     <ClCompile Include="src\rendering\glad\glad_glx.c" />
     <ClCompile Include="src\rendering\glad\glad_wgl.c" />
+    <ClCompile Include="src\rendering\shaders\ShaderProgram.cpp" />
     <ClCompile Include="src\rendering\stb\stb_image.cpp" />
+    <ClCompile Include="src\rendering\textures\Texture.cpp" />
     <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
+    <ClCompile Include="src\rendering\utils\Maths.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\rendering\shaders\fragmentShader.txt" />
+    <Text Include="src\rendering\shaders\vertexShader.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
