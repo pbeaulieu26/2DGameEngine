@@ -5,10 +5,8 @@
 #include <glad/glad.h>
 
 
-Renderer2D::Renderer2D(VertexObjectLoader& vertexObjectLoader)
+Renderer2D::Renderer2D()
 {
-    float positions[] = { -1, 1, -1, -1, 1, 1, 1, -1 };
-    m_quad = vertexObjectLoader.loadToVAO(positions, 8);
     initializeGlContext();
 }
 
@@ -21,20 +19,40 @@ void Renderer2D::initializeGlContext()
     glClearColor(0, 0, 0, 0);
 }
 
-void Renderer2D::render(const std::vector<Entity>& entities)
+void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities)
 {
     m_shader.start();
-    glBindVertexArray(m_quad.vaoId);
-    glEnableVertexAttribArray(0);
-
-    for (const Entity& entity : entities)
+    
+    for (auto iter : entities)
     {
-        glBindTexture(GL_TEXTURE_2D, entity.texturedModel.texture);
-        glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.scale);
-        m_shader.loadTransformation(matrix);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, m_quad.vertexCount);
+        const TexturedModel& texturedModel = iter.first;
+        const std::vector<Entity>& batch = iter.second;
+        prepareTexturedModel(texturedModel);
+
+        for (const Entity& entity : batch)
+        {
+            glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.scale);
+            m_shader.loadTransformation(matrix);
+            glDrawArrays(GL_TRIANGLE_STRIP, 0, texturedModel.rawModel.vertexCount);
+        }
+
+        unbindTexturedModel();
     }
 
-    glBindVertexArray(0);
     m_shader.stop();
+}
+
+void Renderer2D::prepareTexturedModel(const TexturedModel& texturedModel)
+{
+    glBindVertexArray(texturedModel.rawModel.vaoId);
+    glEnableVertexAttribArray(0);
+    //glEnableVertexAttribArray(1);
+    glBindTexture(GL_TEXTURE_2D, texturedModel.texture);
+}
+
+void Renderer2D::unbindTexturedModel()
+{
+    glDisableVertexAttribArray(0);
+    //glDisableVertexAttribArray(1);
+    glBindVertexArray(0);
 }

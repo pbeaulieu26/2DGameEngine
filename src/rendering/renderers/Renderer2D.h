@@ -3,19 +3,22 @@
 #include "rendering/shaders/Shader2D.h"
 #include "rendering/models/VertexObjectLoader.h"
 #include "rendering/entities/Entity.h"
+#include "rendering/models/TexturedModel.h"
 
 
 class Renderer2D
 {
 public:
 
-    explicit Renderer2D(VertexObjectLoader& vertexObjectLoader);
+    Renderer2D();
 
-    void render(const std::vector<Entity>& entities);
+    void render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities);
 
 private:
 
     void initializeGlContext();
+    void prepareTexturedModel(const TexturedModel& texturedModel);
+    void unbindTexturedModel();
 
 private:
 
