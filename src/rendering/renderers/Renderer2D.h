@@ -1,9 +1,9 @@
-#ifndef RENDERER_2D_H
-#define RENDERER_2D_H
+#pragma once
 
 #include "rendering/shaders/Shader2D.h"
 #include "rendering/models/VertexObjectLoader.h"
 #include "rendering/textures/Texture.h"
+
 
 class Renderer2D
 {
@@ -23,6 +23,4 @@ private:
     Shader2D m_shader;
 
 };
-
-#endif // !RENDERER_2D_H
 

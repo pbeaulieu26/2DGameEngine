@@ -1,8 +1,8 @@
-#ifndef FISHEYE_TEXTURE_H
-#define FISHEYE_TEXTURE_H
+#pragma once
 
 #include <glm/glm.hpp>
 #include <glad/glad.h>
+
 
 struct Texture
 {
@@ -16,6 +16,3 @@ public:
     glm::vec2 scale;
 
 };
-
-#endif // !FISHEYE_TEXTURE_H
-

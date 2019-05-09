@@ -1,9 +1,9 @@
-#ifndef SHADER_2D_H
-#define SHADER_2D_H
+#pragma once
 
 #include "ShaderProgram.h"
 
 #include <glm/glm.hpp>
+
 
 class Shader2D : public ShaderProgram
 {
@@ -17,5 +17,3 @@ private:
     GLint m_locationTransformationMatrix;
 
 };
-
-#endif // !SHADER_2D_H

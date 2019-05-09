@@ -1,10 +1,11 @@
+#include "pch.h"
 #include "DisplayManager.h"
 
 #include <glad/glad.h>
 #include <glad/glad_wgl.h>
 
 #include <GLFW/glfw3.h>
-#include <iostream>
+
 
 GLFWwindow* DisplayManager::m_window = nullptr;
 InputCallback* DisplayManager::m_inputCallback = nullptr;

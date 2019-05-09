@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "VertexObjectLoader.h"
 #include "RawModel.h"
 #include "rendering/stb/stb_image.h"

@@ -1,7 +1,9 @@
+#include "pch.h"
 #include "Renderer2D.h"
 #include "rendering/utils/Maths.h"
 
 #include <glad/glad.h>
+
 
 Renderer2D::Renderer2D(VertexObjectLoader& vertexObjectLoader)
 {

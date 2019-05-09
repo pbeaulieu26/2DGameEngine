@@ -1,6 +1,8 @@
+#include "pch.h"
 #include "Maths.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+
 
 glm::mat4 Maths::createTransformationMatrix(const glm::vec2& translation, const glm::vec2& scale)
 {

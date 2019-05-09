@@ -1,10 +1,9 @@
-#ifndef VERTEX_OBJECT_LOADER_H
-#define VERTEX_OBJECT_LOADER_H
+#pragma once
 
 #include "RawModel.h"
 
-#include <vector>
 #include <glad/glad.h>
+
 
 class VertexObjectLoader
 {
@@ -26,5 +25,4 @@ private:
 
 };
 
-#endif // !VERTEX_OBJECT_LOADER_H
 
