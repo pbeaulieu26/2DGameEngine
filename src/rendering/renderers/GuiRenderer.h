@@ -2,16 +2,16 @@
 
 #include "rendering/shaders/Shader2D.h"
 #include "rendering/models/VertexObjectLoader.h"
-#include "rendering/entities/Entity.h"
+#include "rendering/entities/GuiEntity.h"
 
 
-class Renderer2D
+class GuiRenderer
 {
 public:
 
-    explicit Renderer2D(VertexObjectLoader& vertexObjectLoader);
+    explicit GuiRenderer(VertexObjectLoader& vertexObjectLoader);
 
-    void render(const std::vector<Entity>& entities);
+    void render(const std::vector<GuiEntity>& guis);
 
 private:
 
@@ -23,4 +23,3 @@ private:
     Shader2D m_shader;
 
 };
-

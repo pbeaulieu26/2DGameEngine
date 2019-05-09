@@ -62,7 +62,7 @@ void ShaderProgram::loadFloat(GLint location, GLfloat value)
     glUniform1f(location, value);
 }
 
-void ShaderProgram::loadMatrix(GLint location, glm::mat4& matrix)
+void ShaderProgram::loadMatrix(GLint location, const glm::mat4& matrix)
 {
     glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
     glm::value_ptr(matrix);
