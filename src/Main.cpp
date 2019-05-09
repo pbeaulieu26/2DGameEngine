@@ -4,6 +4,7 @@
 #include "rendering/textures/Texture.h"
 #include "rendering/models/VertexObjectLoader.h"
 #include "rendering/renderers/Renderer2D.h"
+#include "engine/Engine.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -16,6 +17,9 @@ void processInput(GLFWwindow *window);
 
 int main()
 {
+    Engine::Log::Init();
+    LOG_INFO("Logger initialized");
+
     int code = DisplayManager::createDisplay(SCREEN_WIDTH, SCREEN_HEIGHT);
     if (code != MANAGER_SUCCESS)
     {
