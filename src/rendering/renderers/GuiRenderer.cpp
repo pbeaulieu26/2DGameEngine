@@ -1,16 +1,16 @@
-#include "Renderer2D.h"
+#include "GuiRenderer.h"
 #include "rendering/utils/Maths.h"
 
 #include <glad/glad.h>
 
-Renderer2D::Renderer2D(VertexObjectLoader& vertexObjectLoader)
+GuiRenderer::GuiRenderer(VertexObjectLoader& vertexObjectLoader)
 {
     float positions[] = { -1, 1, -1, -1, 1, 1, 1, -1 };
     m_quad = vertexObjectLoader.loadToVAO(positions, 8);
     initializeGlContext();
 }
 
-void Renderer2D::initializeGlContext()
+void GuiRenderer::initializeGlContext()
 {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -19,16 +19,16 @@ void Renderer2D::initializeGlContext()
     glClearColor(0, 0, 0, 0);
 }
 
-void Renderer2D::render(const std::vector<Entity>& entities)
+void GuiRenderer::render(const std::vector<GuiEntity>& guis)
 {
     m_shader.start();
     glBindVertexArray(m_quad.vaoId);
     glEnableVertexAttribArray(0);
 
-    for (const Entity& entity : entities)
+    for (const GuiEntity& gui : guis)
     {
-        glBindTexture(GL_TEXTURE_2D, entity.texturedModel.texture);
-        glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.scale);
+        glBindTexture(GL_TEXTURE_2D, gui.texture);
+        glm::mat4 matrix = Maths::createTransformationMatrix(gui.position, gui.scale);
         m_shader.loadTransformation(matrix);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, m_quad.vertexCount);
     }

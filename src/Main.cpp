@@ -1,8 +1,8 @@
 #include "rendering/display/DisplayManager.h"
 #include "rendering/textures/TextureLoader.h"
-#include "rendering/textures/Texture.h"
 #include "rendering/models/VertexObjectLoader.h"
-#include "rendering/renderers/Renderer2D.h"
+#include "rendering/renderers/GuiRenderer.h"
+#include "rendering/entities/GuiEntity.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -22,21 +22,19 @@ int main()
 
     DisplayManager::registerInputCallback(processInput);
 
-    Texture texture;
     TextureLoader textureLoader;
-    texture.id = textureLoader.loadTexture("res/green_texture.png");
-    texture.position = glm::vec2(0.0, 0.0);
-    texture.scale = glm::vec2(1.0, 1.0);
-    std::vector<Texture> textures{ texture };
+    GuiEntity gui1(textureLoader.loadTexture("res/green_texture.png"), glm::vec2(0.0, 0.0), glm::vec2(0.5, 0.5));
+    GuiEntity gui2(textureLoader.loadTexture("res/red_texture.png"), glm::vec2(-1.0, -1.0), glm::vec2(0.5, 0.5));
+    std::vector<GuiEntity> guis{ gui1, gui2 };
 
     VertexObjectLoader vertexObjectLoader;
-    Renderer2D renderer(vertexObjectLoader);
+    GuiRenderer renderer(vertexObjectLoader);
 
     while (!DisplayManager::isCloseRequested())
     {
         DisplayManager::processInput();
 
-        renderer.render(textures);
+        renderer.render(guis);
 
         DisplayManager::updateDisplay();
     }
