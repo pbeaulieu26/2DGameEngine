@@ -70,10 +70,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)include;$(SolutionDir)src</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
     <ExecutablePath>$(SolutionDir);$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)include</IncludePath>
@@ -101,8 +102,8 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\SDL\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\SDL\;$(SolutionDir)lib\GLFW\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -246,14 +247,24 @@
     <ClInclude Include="include\SDL\SDL_version.h" />
     <ClInclude Include="include\SDL\SDL_video.h" />
     <ClInclude Include="include\SDL\SDL_vulkan.h" />
+    <ClInclude Include="src\rendering\display\DisplayManager.h" />
+    <ClInclude Include="src\rendering\stb\stb_image.h" />
+    <ClInclude Include="src\rendering\textures\TextureLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="lib\GLFW\glfw3.lib" />
     <Library Include="lib\SDL\SDL2.lib" />
     <Library Include="lib\SDL\SDL2main.lib" />
     <Library Include="lib\SDL\SDL2test.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\rendering\display\DisplayManager.cpp" />
+    <ClCompile Include="src\rendering\glad\glad.c" />
+    <ClCompile Include="src\rendering\glad\glad_glx.c" />
+    <ClCompile Include="src\rendering\glad\glad_wgl.c" />
+    <ClCompile Include="src\rendering\stb\stb_image.cpp" />
+    <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

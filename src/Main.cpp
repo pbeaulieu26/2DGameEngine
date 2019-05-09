@@ -1,56 +1,42 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2019)
-and may not be redistributed without written permission.*/
+#include "rendering/display/DisplayManager.h"
+#include "rendering/textures/TextureLoader.h"
 
-//Using SDL and standard IO
-#include <SDL/SDL.h>
-#include <stdio.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 600;
 
-int main( int argc, char* args[] )
+void processInput(GLFWwindow *window);
+
+int main()
 {
-	//The window we'll be rendering to
-	SDL_Window* window = NULL;
-	
-	//The surface contained by the window
-	SDL_Surface* screenSurface = NULL;
+    int code = DisplayManager::createDisplay(SCREEN_WIDTH, SCREEN_HEIGHT);
+    if (code != MANAGER_SUCCESS)
+    {
+        return code;
+    }
 
-	//Initialize SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-	{
-		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
-	}
-	else
-	{
-		//Create window
-		window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-		if( window == NULL )
-		{
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
-		}
-		else
-		{
-			//Get window surface
-			screenSurface = SDL_GetWindowSurface( window );
+    DisplayManager::registerInputCallback(processInput);
 
-			//Fill the surface white
-			SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
-			
-			//Update the surface
-			SDL_UpdateWindowSurface( window );
+    TextureLoader textureLoader;
+    textureLoader.loadTexture("res/green_texture.png");
 
-			//Wait two seconds
-			SDL_Delay( 2000 );
-		}
-	}
+    while (!DisplayManager::isCloseRequested())
+    {
+        DisplayManager::processInput();
+        DisplayManager::updateDisplay();
+    }
 
-	//Destroy window
-	SDL_DestroyWindow( window );
+    DisplayManager::closeDisplay();
 
-	//Quit SDL subsystems
-	SDL_Quit();
+    return 0;
+}
 
-	return 0;
+void processInput(GLFWwindow *window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
 }
