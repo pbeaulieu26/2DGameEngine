@@ -1364,6 +1364,9 @@
     <ClInclude Include="src\engine\Core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\rendering\entities\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />
@@ -1396,9 +1399,6 @@
     <ClCompile Include="src\rendering\shaders\Shader2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\rendering\models\RawModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\rendering\models\VertexObjectLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1417,12 +1417,6 @@
     <ClCompile Include="src\rendering\shaders\GuiShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\rendering\entities\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rendering\entities\GuiEntity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\rendering\models\TexturedModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1430,9 +1424,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\Log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rendering\models\VerticesData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,7 +5,7 @@
 #include <glad/glad.h>
 
 Renderer2D::Renderer2D()
-    : m_projectionMatrix(1)
+    : m_projectionMatrix(1.0)
 {
     initializeGlContext();
     WindowSize windowSize = DisplayManager::getWindowSize();
@@ -23,11 +23,13 @@ void Renderer2D::initializeGlContext()
     glClearColor(0, 0, 0, 0);
 }
 
-void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities)
+void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities, const Camera& camera)
 {
     m_shader.start();
 
-    m_shader.loadProjection(m_projectionMatrix);
+    glm::mat4 viewMatrix = Maths::createViewMatrix(camera.position, camera.rotation);
+    m_shader.loadProjectionMatrix(m_projectionMatrix);
+    m_shader.loadViewMatrix(viewMatrix);
     
     for (auto iter : entities)
     {
@@ -37,8 +39,8 @@ void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Enti
 
         for (const Entity& entity : batch)
         {
-            glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
-            m_shader.loadTransformation(matrix);
+            glm::mat4 transformationMatrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
+            m_shader.loadTransformationMatrix(transformationMatrix);
             glDrawElements(GL_TRIANGLES, texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
         }
 

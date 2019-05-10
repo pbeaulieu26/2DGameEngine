@@ -7,6 +7,7 @@
 #include "rendering/renderers/Renderer2D.h"
 #include "rendering/entities/GuiEntity.h"
 #include "rendering/entities/Entity.h"
+#include "rendering/entities/Camera.h"
 #include "rendering/models/VerticesData.h"
 #include "engine/Engine.h"
 
@@ -53,17 +54,18 @@ int main()
     GuiRenderer guiRenderer(vertexObjectLoader);
 
     TextureLoader textureLoader;
-    GuiEntity gui(textureLoader.loadTexture("res/red_texture.png"), glm::vec2(-0.5, -0.5), glm::vec2(0.5, 0.5));
+    GuiEntity gui{ textureLoader.loadTexture("res/red_texture.png"), glm::vec2(-0.5, -0.5), glm::vec2(0.5, 0.5) };
     std::vector<GuiEntity> guis{ gui };
 
     // Entity rendering initialization
 
     Renderer2D renderer2D;
+    Camera camera{ glm::vec2(0.4, 0.0), 0.1f };
 
-    VerticesData verticesDataHex(hex::positions, hex::textureCoords, 12, hex::indices, 12);
+    VerticesData verticesDataHex{ hex::positions, hex::textureCoords, 12, hex::indices, 12 };
     RawModel hex = vertexObjectLoader.loadToVAO(verticesDataHex);
     TexturedModel texturedModel(hex, textureLoader.loadTexture("res/dual_texture.png"));
-    Entity entity(texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2));
+    Entity entity{ texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
     std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher> entities;
     entities[texturedModel] = std::vector<Entity>{ entity };
 
@@ -74,7 +76,7 @@ int main()
         DisplayManager::processInput();
 
         guiRenderer.render(guis);
-        renderer2D.render(entities);
+        renderer2D.render(entities, camera);
 
         DisplayManager::updateDisplay();
     }

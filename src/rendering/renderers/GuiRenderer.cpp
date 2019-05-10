@@ -30,8 +30,8 @@ void GuiRenderer::render(const std::vector<GuiEntity>& guis)
     for (const GuiEntity& gui : guis)
     {
         glBindTexture(GL_TEXTURE_2D, gui.texture);
-        glm::mat4 matrix = Maths::createTransformationMatrix(gui.position, gui.scale);
-        m_shader.loadTransformation(matrix);
+        glm::mat4 transformationMatrix = Maths::createTransformationMatrix(gui.position, gui.scale);
+        m_shader.loadTransformationMatrix(transformationMatrix);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, m_quad.vertexCount);
     }
 

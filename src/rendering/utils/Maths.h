@@ -11,6 +11,7 @@ public:
 
     static glm::mat4 createTransformationMatrix(const glm::vec2& translation, float rotation, const glm::vec2& scale);
     static glm::mat4 createTransformationMatrix(const glm::vec2& translation, const glm::vec2& scale);
+    static glm::mat4 createViewMatrix(const glm::vec2& translation, float rotation);
 
 };
 

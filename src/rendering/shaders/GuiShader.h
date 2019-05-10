@@ -10,7 +10,7 @@ class GuiShader : public ShaderProgram
 public:
 
     GuiShader();
-    void loadTransformation(const glm::mat4& matrix);
+    void loadTransformationMatrix(const glm::mat4& matrix);
 
 private:
     

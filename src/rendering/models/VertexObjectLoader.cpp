@@ -21,7 +21,7 @@ RawModel VertexObjectLoader::loadToVAO(float * const positions, GLint size)
     GLuint vaoID = createVAO();
     storeDataInAttributeList(0, 2, positions, size);
     unbindVAO();
-    return RawModel(vaoID, size / 2);
+    return RawModel{ vaoID, size / 2 };
 }
 
 RawModel VertexObjectLoader::loadToVAO(const VerticesData& verticesData)
@@ -31,7 +31,7 @@ RawModel VertexObjectLoader::loadToVAO(const VerticesData& verticesData)
     storeDataInAttributeList(0, 2, verticesData.positions, verticesData.dataSize);
     storeDataInAttributeList(1, 2, verticesData.textureCoords, verticesData.dataSize);
     unbindVAO();
-    return RawModel(vaoID, verticesData.indexCount);
+    return RawModel{ vaoID, verticesData.indexCount };
 }
 
 GLuint VertexObjectLoader::createVAO()

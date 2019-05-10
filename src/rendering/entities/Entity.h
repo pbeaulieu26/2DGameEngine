@@ -10,7 +10,6 @@ struct Entity
 public:
 
     Entity() = default;
-    Entity(const TexturedModel& texturedModel, const glm::vec2& position, float rotation, const glm::vec2& scale);
 
     TexturedModel texturedModel;
     glm::vec2 position;

@@ -14,14 +14,20 @@ Shader2D::Shader2D()
 {
     m_locationTransformationMatrix = getUniformLocation("transformationMatrix");
     m_locationProjectionMatrix = getUniformLocation("projectionMatrix");
+    m_locationViewMatrix = getUniformLocation("viewMatrix");
 }
 
-void Shader2D::loadTransformation(glm::mat4& matrix)
+void Shader2D::loadTransformationMatrix(glm::mat4& matrix)
 {
     loadMatrix(m_locationTransformationMatrix, matrix);
 }
 
-void Shader2D::loadProjection(glm::mat4& matrix)
+void Shader2D::loadProjectionMatrix(glm::mat4& matrix)
 {
     loadMatrix(m_locationProjectionMatrix, matrix);
+}
+
+void Shader2D::loadViewMatrix(glm::mat4& matrix)
+{
+    loadMatrix(m_locationViewMatrix, matrix);
 }

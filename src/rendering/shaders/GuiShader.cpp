@@ -15,7 +15,7 @@ GuiShader::GuiShader()
     m_locationTransformationMatrix = getUniformLocation("transformationMatrix");
 }
 
-void GuiShader::loadTransformation(const glm::mat4& matrix)
+void GuiShader::loadTransformationMatrix(const glm::mat4& matrix)
 {
     loadMatrix(m_locationTransformationMatrix, matrix);
 }

@@ -2,6 +2,7 @@
 
 #include "rendering/shaders/Shader2D.h"
 #include "rendering/models/VertexObjectLoader.h"
+#include "rendering/entities/Camera.h"
 #include "rendering/entities/Entity.h"
 #include "rendering/models/TexturedModel.h"
 #include "rendering/display/DisplayManager.h"
@@ -13,7 +14,7 @@ public:
 
     Renderer2D();
 
-    void render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities);
+    void render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities, const Camera& camera);
 
     Renderer2D(const Renderer2D&) = delete;
     void operator=(const Renderer2D&) = delete;
