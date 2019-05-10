@@ -6,7 +6,7 @@ namespace
 {
     const char * vertexShaderFile = "src/rendering/shaders/vertexShader.txt";
     const char * fragmentShaderFile = "src/rendering/shaders/fragmentShader.txt";
-    const std::vector<const GLchar *> attributes{ "position" };
+    const std::vector<const GLchar *> attributes{ "position", "textureCoords" };
 }
 
 Shader2D::Shader2D()

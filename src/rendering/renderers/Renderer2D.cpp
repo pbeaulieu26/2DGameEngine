@@ -34,7 +34,7 @@ void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Enti
         {
             glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
             m_shader.loadTransformation(matrix);
-            glDrawArrays(GL_TRIANGLE_STRIP, 0, texturedModel.rawModel.vertexCount);
+            glDrawElements(GL_TRIANGLES, texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
         }
 
         unbindTexturedModel();
@@ -47,13 +47,13 @@ void Renderer2D::prepareTexturedModel(const TexturedModel& texturedModel)
 {
     glBindVertexArray(texturedModel.rawModel.vaoId);
     glEnableVertexAttribArray(0);
-    //glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(1);
     glBindTexture(GL_TEXTURE_2D, texturedModel.texture);
 }
 
 void Renderer2D::unbindTexturedModel()
 {
     glDisableVertexAttribArray(0);
-    //glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(1);
     glBindVertexArray(0);
 }

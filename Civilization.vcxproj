@@ -700,6 +700,7 @@
     <ClInclude Include="src\rendering\stb\stb_image.h" />
     <ClInclude Include="src\rendering\textures\TextureLoader.h" />
     <ClInclude Include="src\rendering\utils\Maths.h" />
+    <ClInclude Include="src\rendering\models\VerticesData.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />
@@ -759,6 +760,7 @@
     </ClCompile>
     <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
     <ClCompile Include="src\rendering\utils\Maths.cpp" />
+    <ClCompile Include="src\rendering\models\VerticesData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\rendering\shaders\fragmentShader.txt" />

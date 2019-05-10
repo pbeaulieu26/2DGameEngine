@@ -24,6 +24,16 @@ RawModel VertexObjectLoader::loadToVAO(float * const positions, GLint size)
     return RawModel(vaoID, size / 2);
 }
 
+RawModel VertexObjectLoader::loadToVAO(const VerticesData& verticesData)
+{
+    GLuint vaoID = createVAO();
+    bindIndicesBuffer(verticesData.indices, verticesData.indexCount);
+    storeDataInAttributeList(0, 2, verticesData.positions, verticesData.dataSize);
+    storeDataInAttributeList(1, 2, verticesData.textureCoords, verticesData.dataSize);
+    unbindVAO();
+    return RawModel(vaoID, verticesData.indexCount);
+}
+
 GLuint VertexObjectLoader::createVAO()
 {
     GLuint vaoID;
@@ -42,6 +52,15 @@ void VertexObjectLoader::storeDataInAttributeList(GLuint attributeNumber, GLint 
     glBufferData(GL_ARRAY_BUFFER, sizeof(data) * size, data, GL_STATIC_DRAW);
     glVertexAttribPointer(attributeNumber, attributeSize, GL_FLOAT, GL_FALSE, 0, nullptr);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void VertexObjectLoader::bindIndicesBuffer(int* indices, GLint size)
+{
+    GLuint vboID;
+    glGenBuffers(1, &vboID);
+    m_vbos.push_back(vboID);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vboID);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices) * size, indices, GL_STATIC_DRAW);
 }
 
 void VertexObjectLoader::unbindVAO()

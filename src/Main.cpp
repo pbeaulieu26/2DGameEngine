@@ -7,6 +7,7 @@
 #include "rendering/renderers/Renderer2D.h"
 #include "rendering/entities/GuiEntity.h"
 #include "rendering/entities/Entity.h"
+#include "rendering/models/VerticesData.h"
 #include "engine/Engine.h"
 
 #include <glad/glad.h>
@@ -17,6 +18,21 @@ const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
 void processInput(GLFWwindow* window);
+
+namespace rect
+{
+    float positions[] = { -1, 1, -1, -1, 1, -1, 1, 1 };
+    float textureCoords[] = { 0, 1, 1, 0, 1, 0, 0, 1 };
+    int indices[] = { 0, 1, 2, 0, 2, 3 };
+}
+
+namespace hex
+{
+    float side = sqrt(3) / 2;
+    float positions[] = { -side, 0.5, -side, -0.5, 0, -1, side, -0.5, side, 0.5, 0, 1 };
+    float textureCoords[] = { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0 };
+    int indices[] = { 0, 1, 2, 0, 2, 5, 2, 3, 5, 3, 4, 5 };
+}
 
 int main()
 {
@@ -44,12 +60,10 @@ int main()
 
     Renderer2D renderer2D;
 
-    float positions[] = { -1, 1, -1, -1, 1, 1, 1, -1 };
-    RawModel quad = vertexObjectLoader.loadToVAO(positions, 8);
-    int texture = textureLoader.loadTexture("res/green_texture.png");
-
-    TexturedModel texturedModel(quad, texture);
-    Entity entity(texturedModel, glm::vec2(0.0, 0.0), 1.0, glm::vec2(0.5, 0.5));
+    VerticesData verticesDataHex(hex::positions, hex::textureCoords, 12, hex::indices, 12);
+    RawModel hex = vertexObjectLoader.loadToVAO(verticesDataHex);
+    TexturedModel texturedModel(hex, textureLoader.loadTexture("res/dual_texture.png"));
+    Entity entity(texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2));
     std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher> entities;
     entities[texturedModel] = std::vector<Entity>{ entity };
 
