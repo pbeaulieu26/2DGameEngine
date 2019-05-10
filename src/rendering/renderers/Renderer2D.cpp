@@ -12,6 +12,7 @@ Renderer2D::Renderer2D()
 
 void Renderer2D::initializeGlContext()
 {
+    glEnable(GL_MULTISAMPLE);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
@@ -31,7 +32,7 @@ void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Enti
 
         for (const Entity& entity : batch)
         {
-            glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.scale);
+            glm::mat4 matrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
             m_shader.loadTransformation(matrix);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, texturedModel.rawModel.vertexCount);
         }

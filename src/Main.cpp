@@ -49,7 +49,7 @@ int main()
     int texture = textureLoader.loadTexture("res/green_texture.png");
 
     TexturedModel texturedModel(quad, texture);
-    Entity entity(texturedModel, glm::vec2(0.0, 0.0), glm::vec2(0.0, 0.0), glm::vec2(0.5, 0.5));
+    Entity entity(texturedModel, glm::vec2(0.0, 0.0), 1.0, glm::vec2(0.5, 0.5));
     std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher> entities;
     entities[texturedModel] = std::vector<Entity>{ entity };
 
