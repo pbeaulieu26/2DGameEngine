@@ -10,7 +10,12 @@ class VertexObjectLoader
 {
 public:
 
+    VertexObjectLoader() = default;
     virtual ~VertexObjectLoader();
+
+    VertexObjectLoader(const VertexObjectLoader&) = delete;
+    void operator=(const VertexObjectLoader&) = delete;
+
     RawModel loadToVAO(float* const positions, GLint size);
     RawModel loadToVAO(const VerticesData& verticesData);
 

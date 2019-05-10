@@ -10,6 +10,9 @@ public:
 
     ShaderProgram(const char * vertexFile, const char * fragmentFile, const std::vector<const GLchar *>& attributes);
     virtual ~ShaderProgram();
+
+    ShaderProgram(const ShaderProgram&) = delete;
+    void operator=(const ShaderProgram&) = delete;
     
     GLint getUniformLocation(const GLchar * uniformName);
     void start();

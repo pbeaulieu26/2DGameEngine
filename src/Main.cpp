@@ -28,7 +28,7 @@ namespace rect
 
 namespace hex
 {
-    float side = sqrt(3) / 2;
+    float side = sqrt(3.0f) / 2.0f;
     float positions[] = { -side, 0.5, -side, -0.5, 0, -1, side, -0.5, side, 0.5, 0, 1 };
     float textureCoords[] = { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0 };
     int indices[] = { 0, 1, 2, 0, 2, 5, 2, 3, 5, 3, 4, 5 };

@@ -14,6 +14,9 @@ public:
 
     void render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities);
 
+    Renderer2D(const Renderer2D&) = delete;
+    void operator=(const Renderer2D&) = delete;
+
 private:
 
     void initializeGlContext();

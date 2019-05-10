@@ -11,6 +11,9 @@ public:
 
     explicit GuiRenderer(VertexObjectLoader& vertexObjectLoader);
 
+    GuiRenderer(const GuiRenderer&) = delete;
+    void operator=(const GuiRenderer&) = delete;
+
     void render(const std::vector<GuiEntity>& guis);
 
 private:
