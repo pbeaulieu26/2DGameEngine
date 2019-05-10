@@ -4,10 +4,13 @@
 
 #include <glad/glad.h>
 
-
 Renderer2D::Renderer2D()
+    : m_projectionMatrix(1)
 {
     initializeGlContext();
+    WindowSize windowSize = DisplayManager::getWindowSize();
+    createProjectionMatrix(windowSize);
+    DisplayManager::registerResizeCallback(std::bind(&Renderer2D::createProjectionMatrix, this, std::placeholders::_1));
 }
 
 void Renderer2D::initializeGlContext()
@@ -23,6 +26,8 @@ void Renderer2D::initializeGlContext()
 void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities)
 {
     m_shader.start();
+
+    m_shader.loadProjection(m_projectionMatrix);
     
     for (auto iter : entities)
     {
@@ -56,4 +61,10 @@ void Renderer2D::unbindTexturedModel()
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glBindVertexArray(0);
+}
+
+void Renderer2D::createProjectionMatrix(const WindowSize& windowSize)
+{
+    float aspectRatio = float(windowSize.width) / float(windowSize.height);
+    m_projectionMatrix[1][1] = aspectRatio;
 }

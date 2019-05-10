@@ -1,13 +1,20 @@
 #pragma once
 
-struct GLFWwindow;
+#include <functional>
 
-typedef void InputCallback(GLFWwindow*);
+struct GLFWwindow;
+struct GLFWvidmode;
 
 enum ErrorCode
 {
     MANAGER_SUCCESS = 0,
     MANAGER_ERROR = 1
+};
+
+struct WindowSize
+{
+    int width;
+    int height;
 };
 
 class DisplayManager
@@ -21,15 +28,18 @@ public:
     static void closeDisplay();
     static bool isCloseRequested();
     static void processInput();
-    static void registerInputCallback(InputCallback* callback);
+    static void registerInputCallback(std::function<void(GLFWwindow*)> callback);
+    static void registerResizeCallback(std::function<void(const WindowSize&)> callback);
+    static WindowSize getWindowSize();
 
 private:
 
-    static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+    static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 
 private:
 
     static GLFWwindow* m_window;
-    static InputCallback* m_inputCallback;
+    static std::vector<std::function<void(GLFWwindow*)>> m_inputCallbacks;
+    static std::vector < std::function<void(const WindowSize&)>> m_resizeCallbacks;
 };
 

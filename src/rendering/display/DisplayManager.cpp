@@ -8,7 +8,8 @@
 
 
 GLFWwindow* DisplayManager::m_window = nullptr;
-InputCallback* DisplayManager::m_inputCallback = nullptr;
+std::vector<std::function<void(GLFWwindow*)>> DisplayManager::m_inputCallbacks;
+std::vector<std::function<void(const WindowSize&)>> DisplayManager::m_resizeCallbacks;
 
 int DisplayManager::createDisplay(int width, int height)
 {
@@ -26,7 +27,7 @@ int DisplayManager::createDisplay(int width, int height)
         return MANAGER_ERROR;
     }
     glfwMakeContextCurrent(m_window);
-    glfwSetFramebufferSizeCallback(m_window, DisplayManager::framebuffer_size_callback);
+    glfwSetFramebufferSizeCallback(m_window, DisplayManager::framebufferSizeCallback);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -45,6 +46,8 @@ void DisplayManager::updateDisplay()
 
 void DisplayManager::closeDisplay()
 {
+    m_inputCallbacks.clear();
+    m_resizeCallbacks.clear();
     glfwTerminate();
 }
 
@@ -55,18 +58,35 @@ bool DisplayManager::isCloseRequested()
 
 void DisplayManager::processInput()
 {
-    if (m_inputCallback)
+    for (auto callback : m_inputCallbacks)
     {
-        m_inputCallback(m_window);
+        callback(m_window);
     }
 }
 
-void DisplayManager::registerInputCallback(InputCallback* callback)
+void DisplayManager::registerInputCallback(std::function<void(GLFWwindow*)> callback)
 {
-    m_inputCallback = callback;
+    m_inputCallbacks.push_back(callback);
 }
 
-void DisplayManager::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void DisplayManager::registerResizeCallback(std::function<void(const WindowSize&)> callback)
 {
+    m_resizeCallbacks.push_back(callback);
+}
+
+void DisplayManager::framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+    for (auto callback : m_resizeCallbacks)
+    {
+        callback(WindowSize{ width, height });
+    }
+    
     glViewport(0, 0, width, height);
+}
+
+WindowSize DisplayManager::getWindowSize()
+{
+    WindowSize windowSize;
+    glfwGetWindowSize(m_window, &windowSize.width, &windowSize.height);
+    return windowSize;
 }

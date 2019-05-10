@@ -11,9 +11,11 @@ public:
 
     Shader2D();
     void loadTransformation(glm::mat4& matrix);
+    void loadProjection(glm::mat4& matrix);
 
 private:
     
     GLint m_locationTransformationMatrix;
+    GLint m_locationProjectionMatrix;
 
 };

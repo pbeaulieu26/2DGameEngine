@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rendering/shaders/Shader2D.h"
+#include "rendering/shaders/GuiShader.h"
 #include "rendering/models/VertexObjectLoader.h"
 #include "rendering/entities/GuiEntity.h"
 
@@ -23,6 +23,6 @@ private:
 private:
 
     RawModel m_quad;
-    Shader2D m_shader;
+    GuiShader m_shader;
 
 };
