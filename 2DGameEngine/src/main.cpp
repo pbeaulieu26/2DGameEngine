@@ -122,18 +122,18 @@ void processInput(GLFWwindow* window)
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        camera.position.x += 0.003;
+        camera.position.x += 0.003f;
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        camera.position.x -= 0.003;
+        camera.position.x -= 0.003f;
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        camera.position.y += 0.003;
+        camera.position.y += 0.003f;
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        camera.position.y -= 0.003;
+        camera.position.y -= 0.003f;
     }
 }
