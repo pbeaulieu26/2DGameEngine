@@ -20,11 +20,12 @@ void Renderer2D::initializeGlContext()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
     glActiveTexture(GL_TEXTURE0);
-    glClearColor(0, 0, 0, 0);
 }
 
 void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities, const Camera& camera)
 {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0, 0, 0, 0);
     m_shader.start();
 
     glm::mat4 viewMatrix = Maths::createViewMatrix(camera.position, camera.rotation);
@@ -36,6 +37,7 @@ void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Enti
         const TexturedModel& texturedModel = iter.first;
         const std::vector<Entity>& batch = iter.second;
         prepareTexturedModel(texturedModel);
+        m_shader.loadSubTextureParams(texturedModel.animatedTextureData);
 
         for (const Entity& entity : batch)
         {

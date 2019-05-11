@@ -14,11 +14,19 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <chrono>
+#include <thread>
+
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
 void processInput(GLFWwindow* window);
+
+namespace
+{
+    Camera camera{ glm::vec2(0.4, 0.0), 0.0f };
+}
 
 namespace rect
 {
@@ -31,8 +39,13 @@ namespace hex
 {
     float side = sqrt(3.0f) / 2.0f;
     float positions[] = { -side, 0.5, -side, -0.5, 0, -1, side, -0.5, side, 0.5, 0, 1 };
-    float textureCoords[] = { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0 };
+    float textureCoords[] = { 0.5 - side / 2, 0.75, 0.5 - side / 2, 0.25, 0.5, 0, 0.5 + side / 2, 0.25, 0.5 + side / 2, 0.75, 0.5, 1 };
     int indices[] = { 0, 1, 2, 0, 2, 5, 2, 3, 5, 3, 4, 5 };
+}
+
+namespace animatedHex
+{
+    float textureCoords[12];
 }
 
 int main()
@@ -48,37 +61,48 @@ int main()
 
     DisplayManager::registerInputCallback(processInput);
 
-    // Gui rendering initialization
-
-    VertexObjectLoader vertexObjectLoader;
-    GuiRenderer guiRenderer(vertexObjectLoader);
-
-    TextureLoader textureLoader;
-    GuiEntity gui{ textureLoader.loadTexture("res/red_texture.png"), glm::vec2(-0.5, -0.5), glm::vec2(0.5, 0.5) };
-    std::vector<GuiEntity> guis{ gui };
-
     // Entity rendering initialization
 
     Renderer2D renderer2D;
-    Camera camera{ glm::vec2(0.4, 0.0), 0.1f };
+    TextureLoader textureLoader;
+    VertexObjectLoader vertexObjectLoader;
 
-    VerticesData verticesDataHex{ hex::positions, hex::textureCoords, 12, hex::indices, 12 };
+    float textureCoords[12];
+
+    for (int i = 0; i < 12; i++)
+    {
+        textureCoords[i] = hex::textureCoords[i] / 4;
+    }
+
+    VerticesData verticesDataHex{ hex::positions, textureCoords, 12, hex::indices, 12 };
     RawModel hex = vertexObjectLoader.loadToVAO(verticesDataHex);
-    TexturedModel texturedModel(hex, textureLoader.loadTexture("res/dual_texture.png"));
-    Entity entity{ texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
+    TexturedModel texturedModel{ hex, textureLoader.loadTexture("res/forest_texture.png"), 0, 0, 4, 16 };
+    Entity entity1{ texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
+    Entity entity2{ texturedModel, glm::vec2(0.35, 0.0), 0.0, glm::vec2(0.2, 0.2) };
     std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher> entities;
-    entities[texturedModel] = std::vector<Entity>{ entity };
 
     // Game loop
+
+    int counter = 0;
 
     while (!DisplayManager::isCloseRequested())
     {
         DisplayManager::processInput();
 
-        guiRenderer.render(guis);
+        entities.clear();
+        entities[texturedModel] = std::vector<Entity>{ entity1, entity2 };
+
         renderer2D.render(entities, camera);
 
+        if (++counter == 6)
+        {
+            texturedModel.animatedTextureData.nextSubTexture();
+            counter = 0;
+        }
+
         DisplayManager::updateDisplay();
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
 
     DisplayManager::closeDisplay();
@@ -91,5 +115,21 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(window, true);
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {
+        camera.position.x += 0.003;
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {
+        camera.position.x -= 0.003;
+    }
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {
+        camera.position.y += 0.003;
+    }
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {
+        camera.position.y -= 0.003;
     }
 }

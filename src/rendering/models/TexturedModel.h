@@ -1,6 +1,8 @@
 #pragma once
 
 #include "RawModel.h"
+#include "rendering/textures/AnimatedTextureData.h"
+
 #include <glad/glad.h>
 
 
@@ -14,11 +16,12 @@ public:
     };
 
     TexturedModel() = default;
-    TexturedModel(const RawModel& rawModel, const GLuint& texture);
 
     bool operator==(const TexturedModel &other) const;
 
     RawModel rawModel;
     GLuint texture;
+
+    AnimatedTextureData animatedTextureData;
 
 };

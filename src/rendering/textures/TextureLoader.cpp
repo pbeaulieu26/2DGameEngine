@@ -15,7 +15,7 @@ GLuint TextureLoader::loadTexture(const char * fileName)
 {
     GLuint texture;
     int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(false);
+    stbi_set_flip_vertically_on_load(true);
 
     unsigned char *data = stbi_load(fileName, &width, &height, &nrChannels, STBI_rgb);
     if (data)

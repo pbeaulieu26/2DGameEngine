@@ -21,6 +21,7 @@ public:
 protected:
 
     void loadFloat(GLint m_location, GLfloat value);
+    void loadInt(GLint location, GLint value);
     void loadMatrix(GLint m_location, const glm::mat4& matrix);
 
 private:

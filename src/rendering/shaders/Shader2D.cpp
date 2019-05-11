@@ -15,6 +15,10 @@ Shader2D::Shader2D()
     m_locationTransformationMatrix = getUniformLocation("transformationMatrix");
     m_locationProjectionMatrix = getUniformLocation("projectionMatrix");
     m_locationViewMatrix = getUniformLocation("viewMatrix");
+
+    m_locationSubTextureX = getUniformLocation("subTextureX");
+    m_locationSubTextureY = getUniformLocation("subTextureY");
+    m_locationSubTextureSize = getUniformLocation("subTextureSize");
 }
 
 void Shader2D::loadTransformationMatrix(glm::mat4& matrix)
@@ -30,4 +34,11 @@ void Shader2D::loadProjectionMatrix(glm::mat4& matrix)
 void Shader2D::loadViewMatrix(glm::mat4& matrix)
 {
     loadMatrix(m_locationViewMatrix, matrix);
+}
+
+void Shader2D::loadSubTextureParams(const AnimatedTextureData& animatedTextureData)
+{
+    loadFloat(m_locationSubTextureX, animatedTextureData.subTextureX);
+    loadFloat(m_locationSubTextureY, animatedTextureData.subTextureY);
+    loadFloat(m_locationSubTextureSize, animatedTextureData.subTextureSize);
 }
