@@ -29,9 +29,6 @@ void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Enti
     glClearColor(0, 0, 0, 0);
     m_shader.start();
 
-    // No animation, select subtexture which equals the texture
-    m_shader.loadSubTextureParams(AnimatedTextureData{0, 0, 1, 1});
-
     glm::mat4 viewMatrix = Maths::createViewMatrix(camera.position, camera.rotation);
     m_shader.loadProjectionMatrix(m_projectionMatrix);
     m_shader.loadViewMatrix(viewMatrix);
