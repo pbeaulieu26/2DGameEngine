@@ -1,7 +1,7 @@
 #pragma once
 
 
-struct AnimatedTextureData
+struct ENGINE_API AnimatedTextureData
 {
 public:
 

@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 
-struct GuiEntity
+struct ENGINE_API GuiEntity
 {
 public:
 

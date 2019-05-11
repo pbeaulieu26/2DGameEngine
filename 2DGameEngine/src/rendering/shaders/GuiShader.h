@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 
 
-class GuiShader : public ShaderProgram
+class ENGINE_API GuiShader : public ShaderProgram
 {
 public:
 

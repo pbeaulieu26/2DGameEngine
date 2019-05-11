@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 
-class Maths
+class ENGINE_API Maths
 {
 public:
 

@@ -4,8 +4,8 @@
 
 namespace
 {
-    const char * vertexShaderFile = "src/rendering/shaders/vertexShader.txt";
-    const char * fragmentShaderFile = "src/rendering/shaders/fragmentShader.txt";
+    const char * vertexShaderFile = "res/shaders/vertexShader.txt";
+    const char * fragmentShaderFile = "res/shaders/fragmentShader.txt";
     const std::vector<const GLchar *> attributes{ "position", "textureCoords" };
 }
 

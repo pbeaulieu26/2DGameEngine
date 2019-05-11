@@ -6,7 +6,7 @@
 #include <glad/glad.h>
 
 
-class VertexObjectLoader
+class ENGINE_API VertexObjectLoader
 {
 public:
 

@@ -5,19 +5,19 @@
 struct GLFWwindow;
 struct GLFWvidmode;
 
-enum ErrorCode
+enum ENGINE_API ErrorCode
 {
     MANAGER_SUCCESS = 0,
     MANAGER_ERROR = 1
 };
 
-struct WindowSize
+struct ENGINE_API WindowSize
 {
     int width;
     int height;
 };
 
-class DisplayManager
+class ENGINE_API DisplayManager
 {
 public:
 

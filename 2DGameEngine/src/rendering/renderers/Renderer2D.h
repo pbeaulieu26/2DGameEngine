@@ -9,7 +9,7 @@
 #include "rendering/textures/animations/AnimatedTexturedModel.h"
 
 
-class Renderer2D
+class ENGINE_API Renderer2D
 {
 public:
 
