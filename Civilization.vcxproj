@@ -301,7 +301,9 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\rendering\textures\AnimatedTextureData.h" />
+    <ClInclude Include="src\rendering\textures\animations\AnimatedTexturedModel.h" />
+    <ClInclude Include="src\rendering\textures\animations\AnimationUpdater.h" />
+    <ClInclude Include="src\rendering\textures\animations\AnimatedTextureData.h" />
     <ClInclude Include="src\rendering\entities\Camera.h" />
     <ClInclude Include="src\engine\Core.h" />
     <ClInclude Include="src\rendering\entities\Entity.h" />
@@ -625,7 +627,9 @@
     <Library Include="lib\GLFW\glfw3.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\rendering\textures\AnimatedTextureData.cpp" />
+    <ClCompile Include="src\rendering\textures\animations\AnimatedTexturedModel.cpp" />
+    <ClCompile Include="src\rendering\textures\animations\AnimationUpdater.cpp" />
+    <ClCompile Include="src\rendering\textures\animations\AnimatedTextureData.cpp" />
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

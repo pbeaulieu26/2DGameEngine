@@ -1367,7 +1367,13 @@
     <ClInclude Include="src\rendering\entities\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\textures\AnimatedTextureData.h">
+    <ClInclude Include="src\rendering\textures\animations\AnimatedTextureData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rendering\textures\animations\AnimationUpdater.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rendering\textures\animations\AnimatedTexturedModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1429,7 +1435,13 @@
     <ClCompile Include="src\engine\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\rendering\textures\AnimatedTextureData.cpp">
+    <ClCompile Include="src\rendering\textures\animations\AnimatedTextureData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rendering\textures\animations\AnimationUpdater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rendering\textures\animations\AnimatedTexturedModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

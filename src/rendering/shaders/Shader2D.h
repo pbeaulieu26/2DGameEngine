@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ShaderProgram.h"
-#include "rendering/textures/AnimatedTextureData.h"
+#include "rendering/textures/animations/AnimatedTextureData.h"
 
 #include <glm/glm.hpp>
 

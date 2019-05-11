@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RawModel.h"
-#include "rendering/textures/AnimatedTextureData.h"
+#include "rendering/textures/animations/AnimatedTextureData.h"
 
 #include <glad/glad.h>
 
@@ -21,7 +21,5 @@ public:
 
     RawModel rawModel;
     GLuint texture;
-
-    AnimatedTextureData animatedTextureData;
 
 };

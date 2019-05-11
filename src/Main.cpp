@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "rendering/display/DisplayManager.h"
 #include "rendering/textures/TextureLoader.h"
+#include "rendering/textures/animations/AnimationUpdater.h"
+#include "rendering/textures/animations/AnimatedTexturedModel.h"
 #include "rendering/models/TexturedModel.h"
 #include "rendering/models/VertexObjectLoader.h"
 #include "rendering/renderers/GuiRenderer.h"
@@ -66,6 +68,7 @@ int main()
     Renderer2D renderer2D;
     TextureLoader textureLoader;
     VertexObjectLoader vertexObjectLoader;
+    AnimationUpdater animationUpdater;
 
     float textureCoords[12];
 
@@ -76,10 +79,11 @@ int main()
 
     VerticesData verticesDataHex{ hex::positions, textureCoords, 12, hex::indices, 12 };
     RawModel hex = vertexObjectLoader.loadToVAO(verticesDataHex);
-    TexturedModel texturedModel{ hex, textureLoader.loadTexture("res/forest_texture.png"), 0, 0, 4, 16 };
-    Entity entity1{ texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
-    Entity entity2{ texturedModel, glm::vec2(0.35, 0.0), 0.0, glm::vec2(0.2, 0.2) };
-    std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher> entities;
+    AnimatedTexturedModel animatedTexturedModel{ hex, textureLoader.loadTexture("res/forest_texture.png"), 0, 0, 4, 16 };
+    Entity entity1{ animatedTexturedModel.texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
+    Entity entity2{ animatedTexturedModel.texturedModel, glm::vec2(0.35, 0.0), 0.0, glm::vec2(0.2, 0.2) };
+    std::unordered_map<AnimatedTexturedModel, std::vector<Entity>, AnimatedTexturedModel::Hasher> entities;
+    animationUpdater.bindAnimatedTextureData(animatedTexturedModel.animatedTextureData);
 
     // Game loop
 
@@ -90,13 +94,13 @@ int main()
         DisplayManager::processInput();
 
         entities.clear();
-        entities[texturedModel] = std::vector<Entity>{ entity1, entity2 };
+        entities[animatedTexturedModel] = std::vector<Entity>{ entity1, entity2 };
 
         renderer2D.render(entities, camera);
 
         if (++counter == 6)
         {
-            texturedModel.animatedTextureData.nextSubTexture();
+            animationUpdater.update();
             counter = 0;
         }
 

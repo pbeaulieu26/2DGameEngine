@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 
+
 Renderer2D::Renderer2D()
     : m_projectionMatrix(1.0)
 {
@@ -37,19 +38,44 @@ void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Enti
         const TexturedModel& texturedModel = iter.first;
         const std::vector<Entity>& batch = iter.second;
         prepareTexturedModel(texturedModel);
-        m_shader.loadSubTextureParams(texturedModel.animatedTextureData);
-
-        for (const Entity& entity : batch)
-        {
-            glm::mat4 transformationMatrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
-            m_shader.loadTransformationMatrix(transformationMatrix);
-            glDrawElements(GL_TRIANGLES, texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
-        }
-
+        processEntities(batch);
         unbindTexturedModel();
     }
 
     m_shader.stop();
+}
+
+void Renderer2D::render(const std::unordered_map<AnimatedTexturedModel, std::vector<Entity>, AnimatedTexturedModel::Hasher>& entities, const Camera& camera)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0, 0, 0, 0);
+    m_shader.start();
+
+    glm::mat4 viewMatrix = Maths::createViewMatrix(camera.position, camera.rotation);
+    m_shader.loadProjectionMatrix(m_projectionMatrix);
+    m_shader.loadViewMatrix(viewMatrix);
+
+    for (auto iter : entities)
+    {
+        const AnimatedTexturedModel& animatedTexturedModel = iter.first;
+        const std::vector<Entity>& batch = iter.second;
+        prepareTexturedModel(animatedTexturedModel.texturedModel);
+        m_shader.loadSubTextureParams(animatedTexturedModel.animatedTextureData);
+        processEntities(batch);
+        unbindTexturedModel();
+    }
+
+    m_shader.stop();
+}
+
+void Renderer2D::processEntities(const std::vector<Entity>& entities)
+{
+    for (const Entity& entity : entities)
+    {
+        glm::mat4 transformationMatrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
+        m_shader.loadTransformationMatrix(transformationMatrix);
+        glDrawElements(GL_TRIANGLES, entity.texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
+    }
 }
 
 void Renderer2D::prepareTexturedModel(const TexturedModel& texturedModel)
