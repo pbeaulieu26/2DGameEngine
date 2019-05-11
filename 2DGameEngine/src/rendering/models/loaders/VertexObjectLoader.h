@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RawModel.h"
-#include "VerticesData.h"
+#include "rendering/models/RawModel.h"
+#include "rendering/models/ModelData.h"
 
 #include <glad/glad.h>
 
@@ -17,13 +17,13 @@ public:
     void operator=(const VertexObjectLoader&) = delete;
 
     RawModel loadToVAO(float* const positions, GLint size);
-    RawModel loadToVAO(const VerticesData& verticesData);
+    RawModel loadToVAO(const ModelData& modelData);
 
 private:
 
     GLuint createVAO();
-    void storeDataInAttributeList(GLuint attributeNumber, GLint attributeSize, float* const data, GLint size);
-    void bindIndicesBuffer(int* indices, GLint size);
+    void storeDataInAttributeList(GLuint attributeNumber, GLint attributeSize, const float* data, GLint size);
+    void bindIndicesBuffer(const int* indices, GLint size);
     void unbindVAO();
 
 private:

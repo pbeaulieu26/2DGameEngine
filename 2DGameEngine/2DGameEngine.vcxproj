@@ -458,6 +458,7 @@
     <ClInclude Include="include\spdlog\spdlog.h" />
     <ClInclude Include="include\spdlog\tweakme.h" />
     <ClInclude Include="include\spdlog\version.h" />
+    <ClInclude Include="src\rendering\models\loaders\ObjFileLoader.h" />
     <ClInclude Include="src\engine\Core.h" />
     <ClInclude Include="src\engine\Engine.h" />
     <ClInclude Include="src\engine\Log.h" />
@@ -466,10 +467,11 @@
     <ClInclude Include="src\rendering\entities\Camera.h" />
     <ClInclude Include="src\rendering\entities\Entity.h" />
     <ClInclude Include="src\rendering\entities\GuiEntity.h" />
+    <ClInclude Include="src\rendering\models\ModelData.h" />
     <ClInclude Include="src\rendering\models\RawModel.h" />
     <ClInclude Include="src\rendering\models\TexturedModel.h" />
-    <ClInclude Include="src\rendering\models\VertexObjectLoader.h" />
-    <ClInclude Include="src\rendering\models\VerticesData.h" />
+    <ClInclude Include="src\rendering\models\Vertex.h" />
+    <ClInclude Include="src\rendering\models\loaders\VertexObjectLoader.h" />
     <ClInclude Include="src\rendering\renderers\GuiRenderer.h" />
     <ClInclude Include="src\rendering\renderers\Renderer2D.h" />
     <ClInclude Include="src\rendering\shaders\GuiShader.h" />
@@ -622,6 +624,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\rendering\models\loaders\ObjFileLoader.cpp" />
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -649,8 +652,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\rendering\models\ModelData.cpp" />
     <ClCompile Include="src\rendering\models\TexturedModel.cpp" />
-    <ClCompile Include="src\rendering\models\VertexObjectLoader.cpp" />
+    <ClCompile Include="src\rendering\models\loaders\VertexObjectLoader.cpp" />
     <ClCompile Include="src\rendering\renderers\GuiRenderer.cpp" />
     <ClCompile Include="src\rendering\renderers\Renderer2D.cpp" />
     <ClCompile Include="src\rendering\shaders\GuiShader.cpp" />

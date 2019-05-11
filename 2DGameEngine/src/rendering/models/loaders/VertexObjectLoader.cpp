@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "VertexObjectLoader.h"
-#include "RawModel.h"
 #include "rendering/stb/stb_image.h"
 
 
@@ -24,14 +23,14 @@ RawModel VertexObjectLoader::loadToVAO(float * const positions, GLint size)
     return RawModel{ vaoID, size / 2 };
 }
 
-RawModel VertexObjectLoader::loadToVAO(const VerticesData& verticesData)
+RawModel VertexObjectLoader::loadToVAO(const ModelData& modelData)
 {
     GLuint vaoID = createVAO();
-    bindIndicesBuffer(verticesData.indices, verticesData.indexCount);
-    storeDataInAttributeList(0, 2, verticesData.positions, verticesData.dataSize);
-    storeDataInAttributeList(1, 2, verticesData.textureCoords, verticesData.dataSize);
+    bindIndicesBuffer(modelData.indices.data(), modelData.indices.size());
+    storeDataInAttributeList(0, 2, modelData.positions.data(), modelData.positions.size());
+    storeDataInAttributeList(1, 2, modelData.textureCoords.data(), modelData.textureCoords.size());
     unbindVAO();
-    return RawModel{ vaoID, verticesData.indexCount };
+    return RawModel{ vaoID, static_cast<int>(modelData.indices.size()) };
 }
 
 GLuint VertexObjectLoader::createVAO()
@@ -43,7 +42,7 @@ GLuint VertexObjectLoader::createVAO()
     return vaoID;
 }
 
-void VertexObjectLoader::storeDataInAttributeList(GLuint attributeNumber, GLint attributeSize, float * const data, GLint size)
+void VertexObjectLoader::storeDataInAttributeList(GLuint attributeNumber, GLint attributeSize, const float * data, GLint size)
 {
     GLuint vboID;
     glGenBuffers(1, &vboID);
@@ -54,7 +53,7 @@ void VertexObjectLoader::storeDataInAttributeList(GLuint attributeNumber, GLint 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void VertexObjectLoader::bindIndicesBuffer(int* indices, GLint size)
+void VertexObjectLoader::bindIndicesBuffer(const int* indices, GLint size)
 {
     GLuint vboID;
     glGenBuffers(1, &vboID);

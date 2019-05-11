@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rendering/shaders/Shader2D.h"
-#include "rendering/models/VertexObjectLoader.h"
+#include "rendering/models/loaders/VertexObjectLoader.h"
 #include "rendering/entities/Camera.h"
 #include "rendering/entities/Entity.h"
 #include "rendering/models/TexturedModel.h"
