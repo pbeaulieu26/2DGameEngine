@@ -5,7 +5,7 @@
 #include <functional>
 
 
-class AnimationUpdater
+class ENGINE_API AnimationUpdater
 {
 public:
 

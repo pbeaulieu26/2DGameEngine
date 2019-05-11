@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 
 
-class Shader2D : public ShaderProgram
+class ENGINE_API Shader2D : public ShaderProgram
 {
 public:
 

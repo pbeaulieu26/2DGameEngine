@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 
 
-class TextureLoader
+class ENGINE_API TextureLoader
 {
 public:
 

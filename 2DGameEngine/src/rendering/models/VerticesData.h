@@ -1,7 +1,7 @@
 #pragma once
 
 
-struct VerticesData
+struct ENGINE_API VerticesData
 {
 public:
 

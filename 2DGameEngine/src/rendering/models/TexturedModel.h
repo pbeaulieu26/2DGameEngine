@@ -6,7 +6,7 @@
 #include <glad/glad.h>
 
 
-struct TexturedModel
+struct ENGINE_API TexturedModel
 {
 public:
 

@@ -909,15 +909,6 @@
     <ClInclude Include="include\spdlog\version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\Core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Log.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\rendering\display\DisplayManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -976,6 +967,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1378,9 +1384,6 @@
     <ClCompile Include="include\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\Log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\rendering\display\DisplayManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1432,10 +1435,13 @@
     <ClCompile Include="src\rendering\utils\Maths.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\pch.cpp">
+    <ClCompile Include="src\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1443,9 +1449,9 @@
     <Library Include="lib\GLFW\glfw3.lib" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\rendering\shaders\fragmentShader.txt" />
-    <Text Include="src\rendering\shaders\guiFragmentShader.txt" />
-    <Text Include="src\rendering\shaders\guiVertexShader.txt" />
-    <Text Include="src\rendering\shaders\vertexShader.txt" />
+    <Text Include="res\shaders\fragmentShader.txt" />
+    <Text Include="res\shaders\guiFragmentShader.txt" />
+    <Text Include="res\shaders\guiVertexShader.txt" />
+    <Text Include="res\shaders\vertexShader.txt" />
   </ItemGroup>
 </Project>

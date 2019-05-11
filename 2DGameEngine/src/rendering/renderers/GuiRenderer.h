@@ -5,7 +5,7 @@
 #include "rendering/entities/GuiEntity.h"
 
 
-class GuiRenderer
+class ENGINE_API GuiRenderer
 {
 public:
 

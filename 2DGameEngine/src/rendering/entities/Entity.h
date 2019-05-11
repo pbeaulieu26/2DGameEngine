@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 
-struct Entity
+struct ENGINE_API Entity
 {
 public:
 

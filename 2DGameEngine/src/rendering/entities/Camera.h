@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 
-class Camera
+class ENGINE_API Camera
 {
 public:
 

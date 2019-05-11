@@ -4,11 +4,11 @@
 #include "rendering/models/TexturedModel.h"
 
 
-struct AnimatedTexturedModel
+struct ENGINE_API AnimatedTexturedModel
 {
 public:
 
-    struct Hasher
+    struct ENGINE_API Hasher
     {
         std::size_t operator()(const AnimatedTexturedModel& texturedModel) const;
     };

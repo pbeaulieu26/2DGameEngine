@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 
-struct RawModel
+struct ENGINE_API RawModel
 {
 public:
 

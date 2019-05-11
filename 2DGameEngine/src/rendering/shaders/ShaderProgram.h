@@ -4,7 +4,7 @@
 #include <glad/glad.h>
 
 
-class ShaderProgram
+class ENGINE_API ShaderProgram
 {
 public:
 
