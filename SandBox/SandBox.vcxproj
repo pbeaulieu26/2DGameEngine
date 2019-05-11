@@ -111,6 +111,9 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)2DGameEngine\src\;$(SolutionDir)2DGameEngine\include\</AdditionalIncludeDirectories>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy /Y "$(TargetDir)..\2DGameEngine\2DGameEngine.dll" "$(TargetDir)2DGameEngine.dll"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

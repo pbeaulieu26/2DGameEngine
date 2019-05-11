@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ObjFileLoader.h"
 #include "rendering/models/Vertex.h"
+#include "Log.h"
 
 #include <sstream>
 #include <fstream>
@@ -9,6 +10,11 @@
 ModelData ObjFileLoader::loadOBJ(const std::string& objFileName, int subTextureSize)
 {
     std::ifstream objFile(objFileName);
+
+    if (objFile.fail())
+    {
+        LOG_CORE_ERROR("Failed to open .obj file");
+    }
 
     ModelData modelData;
 

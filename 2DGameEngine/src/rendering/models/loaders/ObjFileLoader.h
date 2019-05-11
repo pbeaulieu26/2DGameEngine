@@ -2,7 +2,7 @@
 
 #include "rendering/models/ModelData.h"
 
-class ObjFileLoader
+class ENGINE_API ObjFileLoader
 {
 public:
 

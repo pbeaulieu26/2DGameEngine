@@ -1,6 +1,6 @@
 #pragma once
 
-struct ModelData
+struct ENGINE_API ModelData
 {
 public:
 
