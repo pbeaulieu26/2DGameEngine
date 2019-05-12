@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -162,6 +162,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\events\Event.h" />
+    <ClInclude Include="src\events\EventDispatcher.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\glad\glad_glx.h" />
@@ -464,7 +466,12 @@
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\EntryPoint.h" />
+    <ClInclude Include="src\events\KeyboardEvent.h" />
+    <ClInclude Include="src\events\MouseEvent.h" />
+    <ClInclude Include="src\events\WindowEvent.h" />
+    <ClInclude Include="src\KeyCodes.h" />
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\MouseCodes.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\rendering\display\DisplayManager.h" />
     <ClInclude Include="src\rendering\entities\Camera.h" />
@@ -620,6 +627,8 @@
     <None Include="include\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\events\Event.cpp" />
+    <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="include\glm\detail\glm.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
