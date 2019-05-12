@@ -4,13 +4,14 @@
 #include "rendering/textures/animations/AnimationUpdater.h"
 #include "rendering/textures/animations/AnimatedTexturedModel.h"
 #include "rendering/models/TexturedModel.h"
-#include "rendering/models/VertexObjectLoader.h"
+#include "rendering/models/loaders/VertexObjectLoader.h"
 #include "rendering/renderers/GuiRenderer.h"
 #include "rendering/renderers/Renderer2D.h"
 #include "rendering/entities/GuiEntity.h"
 #include "rendering/entities/Entity.h"
 #include "rendering/entities/Camera.h"
-#include "rendering/models/VerticesData.h"
+#include "rendering/models/ModelData.h"
+#include "rendering/models/loaders/ObjFileLoader.h"
 #include "Engine.h"
 
 #include <glad/glad.h>
@@ -28,26 +29,6 @@ void processInput(GLFWwindow* window);
 namespace
 {
     Camera camera{ glm::vec2(0.4, 0.0), 0.0f };
-}
-
-namespace rect
-{
-    float positions[] = { -1, 1, -1, -1, 1, -1, 1, 1 };
-    float textureCoords[] = { 0, 1, 1, 0, 1, 0, 0, 1 };
-    int indices[] = { 0, 1, 2, 0, 2, 3 };
-}
-
-namespace hex
-{
-    float side = sqrt(3.0f) / 2.0f;
-    float positions[] = { -side, 0.5, -side, -0.5, 0, -1, side, -0.5, side, 0.5, 0, 1 };
-    float textureCoords[] = { 0.5 - side / 2, 0.75, 0.5 - side / 2, 0.25, 0.5, 0, 0.5 + side / 2, 0.25, 0.5 + side / 2, 0.75, 0.5, 1 };
-    int indices[] = { 0, 1, 2, 0, 2, 5, 2, 3, 5, 3, 4, 5 };
-}
-
-namespace animatedHex
-{
-    float textureCoords[12];
 }
 
 int main()
@@ -70,15 +51,8 @@ int main()
     VertexObjectLoader vertexObjectLoader;
     AnimationUpdater animationUpdater;
 
-    float textureCoords[12];
-
-    for (int i = 0; i < 12; i++)
-    {
-        textureCoords[i] = hex::textureCoords[i] / 4;
-    }
-
-    VerticesData verticesDataHex{ hex::positions, textureCoords, 12, hex::indices, 12 };
-    RawModel hex = vertexObjectLoader.loadToVAO(verticesDataHex);
+    ModelData modelData = ObjFileLoader::loadOBJ("res/hex.obj", 4);
+    RawModel hex = vertexObjectLoader.loadToVAO(modelData);
     AnimatedTexturedModel animatedTexturedModel{ hex, textureLoader.loadTexture("res/forest_texture.png"), 0, 0, 4, 16 };
     Entity entity1{ animatedTexturedModel.texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
     Entity entity2{ animatedTexturedModel.texturedModel, glm::vec2(0.35, 0.0), 0.0, glm::vec2(0.2, 0.2) };

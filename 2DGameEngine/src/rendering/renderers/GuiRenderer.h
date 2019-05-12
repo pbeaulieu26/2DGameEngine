@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rendering/shaders/GuiShader.h"
-#include "rendering/models/VertexObjectLoader.h"
+#include "rendering/models/loaders/VertexObjectLoader.h"
 #include "rendering/entities/GuiEntity.h"
 
 
