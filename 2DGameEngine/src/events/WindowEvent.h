@@ -5,7 +5,7 @@ namespace Engine {
 
     class Event; // Forward declaration
 
-    class WindowCloseEvent : public Event
+    class ENGINE_API WindowCloseEvent : public Event
     {
     public:
         WindowCloseEvent() {}

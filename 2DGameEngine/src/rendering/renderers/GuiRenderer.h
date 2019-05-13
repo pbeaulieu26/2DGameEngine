@@ -5,24 +5,28 @@
 #include "rendering/entities/GuiEntity.h"
 
 
-class ENGINE_API GuiRenderer
-{
-public:
+namespace Engine {
 
-    explicit GuiRenderer(VertexObjectLoader& vertexObjectLoader);
+    class ENGINE_API GuiRenderer
+    {
+    public:
 
-    GuiRenderer(const GuiRenderer&) = delete;
-    void operator=(const GuiRenderer&) = delete;
+        explicit GuiRenderer(VertexObjectLoader& vertexObjectLoader);
 
-    void render(const std::vector<GuiEntity>& guis);
+        GuiRenderer(const GuiRenderer&) = delete;
+        void operator=(const GuiRenderer&) = delete;
 
-private:
+        void render(const std::vector<GuiEntity>& guis);
 
-    void initializeGlContext();
+    private:
 
-private:
+        void initializeGlContext();
 
-    RawModel m_quad;
-    GuiShader m_shader;
+    private:
 
-};
+        RawModel m_quad;
+        GuiShader m_shader;
+
+    };
+
+}

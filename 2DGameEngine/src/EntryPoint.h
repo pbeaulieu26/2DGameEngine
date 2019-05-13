@@ -7,7 +7,7 @@
 extern Engine::Application* Engine::CreateApplication();
 
 
-/*int main(int argc, char** argv)
+int main(int argc, char** argv)
 {
     Engine::Log::Init();
     LOG_CORE_INFO("Logger initialized");
@@ -21,4 +21,3 @@ extern Engine::Application* Engine::CreateApplication();
 
     LOG_CORE_INFO("Engine terminated");
 }
-*/

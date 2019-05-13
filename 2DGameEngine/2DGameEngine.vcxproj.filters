@@ -1468,14 +1468,23 @@
     <ClCompile Include="src\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\events\Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\EventDispatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rendering\models\loaders\ObjFileLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rendering\models\ModelData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rendering\models\loaders\VertexObjectLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\guiFragmentShader.txt" />
-    <Text Include="res\shaders\guiVertexShader.txt" />
-    <Text Include="res\shaders\vertexShader.txt" />
   </ItemGroup>
 </Project>

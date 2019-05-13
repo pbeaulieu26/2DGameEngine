@@ -5,23 +5,33 @@ namespace Engine {
 
     class Event; // Forward declaration
 
-    class MouseMovedEvent : public Event
+    class ENGINE_API MouseMovedEvent : public Event
     {
     public:
-        MouseMovedEvent(int mouseX, int mouseY)
+        MouseMovedEvent(double mouseX, double mouseY)
             : m_mouseX(mouseX), m_mouseY(mouseY) {}
         virtual ~MouseMovedEvent() {}
+
+        inline double getMouseX() const { return m_mouseX; }
+        inline double getMouseY() const { return m_mouseY; }
+
+        std::string toString() const override
+        {
+            std::stringstream ss;
+            ss << "MouseButtonPressedEvent: " << getMouseX() << " " << getMouseY();
+            return ss.str();
+        }
 
         EVENT_TYPE(MouseMoved)
 
     private:
-        int m_mouseX;
-        int m_mouseY;
+        double m_mouseX;
+        double m_mouseY;
         
     };
 
 
-    class MouseButtonEvent : public Event
+    class ENGINE_API MouseButtonEvent : public Event
     {
     public:
         MouseButtonEvent(int mouseButton)
@@ -36,7 +46,7 @@ namespace Engine {
     };
 
 
-    class MouseButtonPressedEvent : public MouseButtonEvent
+    class ENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
     {
     public:
         MouseButtonPressedEvent(int mouseButton)
@@ -46,7 +56,7 @@ namespace Engine {
         std::string toString() const override
         {
             std::stringstream ss;
-            ss << "MouseButtonPressedEvent :" << getButtonCode();
+            ss << "MouseButtonPressedEvent: " << getButtonCode();
             return ss.str();
         }
 
@@ -55,7 +65,7 @@ namespace Engine {
     };
 
 
-    class MouseButtonReleasedEvent : public MouseButtonEvent
+    class ENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
     {
     public:
         MouseButtonReleasedEvent(int mouseButton)
@@ -65,12 +75,35 @@ namespace Engine {
         std::string toString() const override
         {
             std::stringstream ss;
-            ss << "MouseButtonReleasedEvent :" << getButtonCode();
+            ss << "MouseButtonReleasedEvent: " << getButtonCode();
             return ss.str();
         }
 
         EVENT_TYPE(MouseButtonReleased)
 
+    };
+
+
+    class ENGINE_API MouseScrolledEvent : public Event
+    {
+    public:
+        MouseScrolledEvent(double xOffset, double yOffset)
+            : m_xOffset(xOffset), m_yOffset(yOffset) {}
+
+        inline double GetXOffset() const { return m_xOffset; }
+        inline double GetYOffset() const { return m_yOffset; }
+
+        std::string toString() const override
+        {
+            std::stringstream ss;
+            ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
+            return ss.str();
+        }
+
+        EVENT_TYPE(MouseScrolled)
+
+    private:
+        double m_xOffset, m_yOffset;
     };
 
 }

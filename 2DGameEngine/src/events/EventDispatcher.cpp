@@ -13,12 +13,12 @@ namespace Engine {
     {
     }
 
-    void EventDispatcher::dispatchEvent(const Event& event)
+    void EventDispatcher::dispatchEvent(std::unique_ptr<Event> event)
     {
-        auto iter = m_eventTypeToFuncMap.find(event.getEventType());
+        auto iter = m_eventTypeToFuncMap.find(event->getEventType());
         if (iter != m_eventTypeToFuncMap.end())
         {
-            (iter->second)(event);
+            (iter->second)(std::move(event));
         }
     }
 

@@ -28,11 +28,9 @@ namespace Engine {
 #define LOG_CORE_INFO(...)  ::Engine::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define LOG_CORE_WARN(...)  ::Engine::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define LOG_CORE_ERROR(...) ::Engine::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define LOG_CORE_FATAL(...) ::Engine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 // App logging macros
 #define LOG_TRACE(...) ::Engine::Log::GetAppLogger()->trace(__VA_ARGS__)
 #define LOG_INFO(...)  ::Engine::Log::GetAppLogger()->info(__VA_ARGS__)
 #define LOG_WARN(...)  ::Engine::Log::GetAppLogger()->warn(__VA_ARGS__)
 #define LOG_ERROR(...) ::Engine::Log::GetAppLogger()->error(__VA_ARGS__)
-#define LOG_FATAL(...) ::Engine::Log::GetAppLogger()->fatal(__VA_ARGS__)

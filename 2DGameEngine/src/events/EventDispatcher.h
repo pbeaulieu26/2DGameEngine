@@ -5,9 +5,7 @@
 
 namespace Engine {
 
-    typedef std::function<void(const Event& event)> EventFn;
     typedef std::unordered_map<EventType, EventFn> EventTypeToFuncMap;
-
 
     class EventDispatcher
     {
@@ -16,7 +14,7 @@ namespace Engine {
         EventDispatcher();
         virtual ~EventDispatcher();
 
-        void dispatchEvent(const Event& event);
+        void dispatchEvent(std::unique_ptr<Event> event);
 
         void registerCallback(EventType eventType, EventFn eventCallback);
 

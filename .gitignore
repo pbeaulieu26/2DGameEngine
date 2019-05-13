@@ -59,4 +59,6 @@ Release
 ipch
 *sdf
 
+!res/
+
 bin-int/

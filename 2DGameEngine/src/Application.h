@@ -4,7 +4,12 @@
 #include "events/EventDispatcher.h"
 
 
+struct GLFWwindow;
+
 namespace Engine {
+
+    const int SCREEN_WIDTH = 800;
+    const int SCREEN_HEIGHT = 600;
 
     class ENGINE_API Application
     {
@@ -15,21 +20,26 @@ namespace Engine {
 
         void run();
 
-        void onEvent(const Event& event);
-
     protected:
-        virtual void onMouseButtonPressedEvent(const Event& event);
-        virtual void onMouseButtonReleasedEvent(const Event& event);
-        virtual void onMouseMovedEvent(const Event& event);
 
-        virtual void onKeyPressedEvent(const Event& event);
-        virtual void onKeyReleasedEvent(const Event& event);
+        virtual void pollInputs(GLFWwindow* window);
+        
+        virtual void onMouseButtonPressedEvent(std::unique_ptr<Event> event);
+        virtual void onMouseButtonReleasedEvent(std::unique_ptr<Event> event);
+        virtual void onMouseMovedEvent(std::unique_ptr<Event> event);
 
-        virtual void onWindowCloseEvent(const Event& event);
+        virtual void onKeyPressedEvent(std::unique_ptr<Event> event);
+        virtual void onKeyReleasedEvent(std::unique_ptr<Event> event);
+
+        virtual void onWindowCloseEvent(std::unique_ptr<Event> event);
 
     private:
+
+        void onEvent(std::unique_ptr<Event> event);
+
         bool m_isRunning;
         std::unique_ptr<EventDispatcher> m_eventDispatcher;
+        std::vector<std::unique_ptr<Event>> m_events;
 
     };
 

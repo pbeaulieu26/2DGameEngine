@@ -5,7 +5,7 @@
 
 namespace Engine {
 
-    enum class EventType
+    enum class ENGINE_API EventType
     {
         None = 0,
         WindowClose,
@@ -31,7 +31,7 @@ namespace Engine {
                          virtual const char* getName() const override { return #type; }
 
 
-    class Event
+    class ENGINE_API Event
     {
 
     public:
@@ -45,5 +45,7 @@ namespace Engine {
         virtual std::string toString() const { return getName(); }
 
     };
+
+    typedef std::function<void(std::unique_ptr<Event> e)> EventFn;
 
 }

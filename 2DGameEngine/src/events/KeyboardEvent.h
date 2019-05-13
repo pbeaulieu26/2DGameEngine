@@ -5,7 +5,7 @@ namespace Engine {
 
     class Event; // Forward declaration
 
-    class KeyEvent : public Event
+    class ENGINE_API KeyEvent : public Event
     {
     public:
         KeyEvent(int keyCode)
@@ -18,7 +18,7 @@ namespace Engine {
     };
 
 
-    class KeyPressedEvent : public KeyEvent
+    class ENGINE_API KeyPressedEvent : public KeyEvent
     {
     public:
         KeyPressedEvent(int keyCode)
@@ -37,7 +37,7 @@ namespace Engine {
     };
 
 
-    class KeyReleasedEvent : public KeyEvent
+    class ENGINE_API KeyReleasedEvent : public KeyEvent
     {
     public:
         KeyReleasedEvent(int keyCode)
