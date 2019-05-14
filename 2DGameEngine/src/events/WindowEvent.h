@@ -15,4 +15,24 @@ namespace Engine {
 
     };
 
+    class ENGINE_API WindowFocusEvent : public Event
+    {
+    public:
+        WindowFocusEvent() {}
+        virtual ~WindowFocusEvent() {}
+
+        EVENT_TYPE(WindowFocus)
+
+    };
+
+    class ENGINE_API WindowLostFocusEvent : public Event
+    {
+    public:
+        WindowLostFocusEvent() {}
+        virtual ~WindowLostFocusEvent() {}
+
+        EVENT_TYPE(WindowLostFocus)
+
+    };
+
 }

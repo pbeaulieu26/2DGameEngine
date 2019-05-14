@@ -178,6 +178,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\input\GLFWInputManager.h" />
     <ClInclude Include="src\events\Event.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />

@@ -50,6 +50,7 @@ namespace Engine {
         static void mouseButtonEventCallback(GLFWwindow* window, int button, int action, int mods);
         static void mouseScrollEventCallback(GLFWwindow* window, double xpos, double ypos);
         static void windowCloseEventCallback(GLFWwindow* window);
+        static void windowFocusEventCallback(GLFWwindow* window, int focused);
 
     private:
 

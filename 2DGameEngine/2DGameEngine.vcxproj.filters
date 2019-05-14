@@ -1017,6 +1017,9 @@
     <ClInclude Include="src\input\GLFWInputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\events\ApplicationEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\glm\detail\func_common.inl">

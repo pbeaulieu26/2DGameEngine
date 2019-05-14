@@ -40,6 +40,7 @@ namespace Engine {
         glfwSetMouseButtonCallback(m_window, mouseButtonEventCallback);
         glfwSetScrollCallback(m_window, mouseScrollEventCallback);
         glfwSetWindowCloseCallback(m_window, windowCloseEventCallback);
+        glfwSetWindowFocusCallback(m_window, windowFocusEventCallback);
 
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
         {
@@ -96,6 +97,16 @@ namespace Engine {
         m_resizeCallbacks.push_back(callback);
     }
 
+    void DisplayManager::framebufferSizeCallback(GLFWwindow* window, int width, int height)
+    {
+        for (auto callback : m_resizeCallbacks)
+        {
+            callback(WindowSize{ width, height });
+        }
+
+        glViewport(0, 0, width, height);
+    }
+
     void DisplayManager::keyEventCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {
         if (action == GLFW_PRESS)
@@ -135,15 +146,18 @@ namespace Engine {
         m_appEventCallback(std::make_unique<WindowCloseEvent>());
     }
 
-    void DisplayManager::framebufferSizeCallback(GLFWwindow* window, int width, int height)
+    void DisplayManager::windowFocusEventCallback(GLFWwindow* window, int focused)
     {
-        for (auto callback : m_resizeCallbacks)
+        if (focused)
         {
-            callback(WindowSize{ width, height });
+            //m_appEventCallback(WindowFocusEvent());
         }
-
-        glViewport(0, 0, width, height);
+        else
+        {
+            //m_appEventCallback(WindowLostFocusEvent());
+        }
     }
+
 
     WindowSize DisplayManager::getWindowSize()
     {
