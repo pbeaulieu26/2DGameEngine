@@ -50,7 +50,6 @@ namespace Engine {
         }
 
         DisplayManager::registerEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
-        DisplayManager::registerInputPollingCallback(std::bind(&Application::pollInputs, this, std::placeholders::_1));
 
         InputManager::setInputManager(std::make_unique<GLFWInputManager>(DisplayManager::getWindow()));
     }
@@ -91,9 +90,6 @@ namespace Engine {
                 m_eventDispatcher->dispatchEvent(std::move(event));
             }
             m_events.clear();
-
-            // poll inputs
-            DisplayManager::pollInputs();
 
             // update window
 
@@ -163,12 +159,6 @@ namespace Engine {
     {
         const WindowCloseEvent* mouseMovedEvent = dynamic_cast<const WindowCloseEvent*>(event.get());
         m_isRunning = false;
-    }
-
-
-    void Application::pollInputs(GLFWwindow* window)
-    {
-
     }
 
 }

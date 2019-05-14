@@ -59,7 +59,6 @@ namespace Engine {
 
     void DisplayManager::closeDisplay()
     {
-        m_inputCallbacks.clear();
         m_resizeCallbacks.clear();
         glfwTerminate();
     }
@@ -67,19 +66,6 @@ namespace Engine {
     bool DisplayManager::isCloseRequested()
     {
         return glfwWindowShouldClose(m_window);
-    }
-
-    void DisplayManager::pollInputs()
-    {
-        for (auto callback : m_inputCallbacks)
-        {
-            callback(m_window);
-        }
-    }
-
-    void DisplayManager::registerInputPollingCallback(std::function<void(GLFWwindow*)> callback)
-    {
-        m_inputCallbacks.push_back(callback);
     }
 
     void DisplayManager::registerEventCallback(EventFn callback)
