@@ -6,6 +6,7 @@
 #include "events/MouseEvent.h"
 #include "events/KeyboardEvent.h"
 #include "events/WindowEvent.h"
+#include "input/GLFWInputManager.h"
 
 #include "rendering/display/DisplayManager.h"
 #include "rendering/textures/TextureLoader.h"
@@ -50,6 +51,8 @@ namespace Engine {
 
         DisplayManager::registerEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
         DisplayManager::registerInputPollingCallback(std::bind(&Application::pollInputs, this, std::placeholders::_1));
+
+        InputManager::setInputManager(std::make_unique<GLFWInputManager>(DisplayManager::getWindow()));
     }
 
 
@@ -58,9 +61,9 @@ namespace Engine {
     }
 
 
-    void Application::run() 
+    void Application::run()
     {
-        Camera camera { glm::vec2(0.4, 0.0), 0.0f };
+        Camera camera{ glm::vec2(0.4, 0.0), 0.0f };
 
         Renderer2D renderer2D;
         TextureLoader textureLoader;
@@ -165,7 +168,7 @@ namespace Engine {
 
     void Application::pollInputs(GLFWwindow* window)
     {
-        
+
     }
 
 }

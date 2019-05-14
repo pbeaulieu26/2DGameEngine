@@ -178,6 +178,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\input\GLFWInputManager.h" />
     <ClInclude Include="src\events\Event.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
     <ClInclude Include="src\Application.h" />
@@ -485,6 +486,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\events\KeyboardEvent.h" />
     <ClInclude Include="src\events\MouseEvent.h" />
     <ClInclude Include="src\events\WindowEvent.h" />
+    <ClInclude Include="src\input\InputManager.h" />
     <ClInclude Include="src\KeyCodes.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\MouseCodes.h" />
@@ -645,6 +647,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <None Include="include\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\input\GLFWInputManager.cpp" />
     <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\Application.cpp" />
@@ -654,6 +657,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\input\InputManager.cpp" />
     <ClCompile Include="src\rendering\models\loaders\ObjFileLoader.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\pch.cpp">

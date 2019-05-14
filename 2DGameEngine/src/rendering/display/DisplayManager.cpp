@@ -86,6 +86,11 @@ namespace Engine {
         m_appEventCallback = callback;
     }
 
+    GLFWwindow * DisplayManager::getWindow()
+    {
+        return m_window;
+    }
+
     void DisplayManager::registerResizeCallback(std::function<void(const WindowSize&)> callback)
     {
         m_resizeCallbacks.push_back(callback);

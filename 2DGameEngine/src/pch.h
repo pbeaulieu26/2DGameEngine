@@ -6,6 +6,7 @@
 #include <memory>
 #include <functional>
 #include <sstream>
+#include <utility>
 
 // Data structures
 #include <string>

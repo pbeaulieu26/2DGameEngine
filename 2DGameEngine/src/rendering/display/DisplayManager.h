@@ -36,6 +36,8 @@ namespace Engine {
         static void registerResizeCallback(std::function<void(const WindowSize&)> callback);
         static void registerEventCallback(EventFn callback);
         
+        static GLFWwindow* getWindow();
+        
         static WindowSize getWindowSize();
 
     private:
