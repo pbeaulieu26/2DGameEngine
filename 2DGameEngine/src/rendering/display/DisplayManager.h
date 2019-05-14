@@ -30,9 +30,7 @@ namespace Engine {
         static void updateDisplay();
         static void closeDisplay();
         static bool isCloseRequested();
-        static void pollInputs();
 
-        static void registerInputPollingCallback(std::function<void(GLFWwindow*)> callback);
         static void registerResizeCallback(std::function<void(const WindowSize&)> callback);
         static void registerEventCallback(EventFn callback);
         

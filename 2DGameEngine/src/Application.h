@@ -22,8 +22,6 @@ namespace Engine {
 
     protected:
 
-        virtual void pollInputs(GLFWwindow* window);
-        
         virtual void onMouseButtonPressedEvent(std::unique_ptr<Event> event);
         virtual void onMouseButtonReleasedEvent(std::unique_ptr<Event> event);
         virtual void onMouseMovedEvent(std::unique_ptr<Event> event);
