@@ -6,7 +6,9 @@ namespace Engine {
 
     class ENGINE_API MouseMovedEvent
     {
+
     public:
+
         MouseMovedEvent(double mouseX, double mouseY)
             : m_mouseX(mouseX), m_mouseY(mouseY) {}
         virtual ~MouseMovedEvent() {}
@@ -22,6 +24,7 @@ namespace Engine {
         }
 
     private:
+
         double m_mouseX;
         double m_mouseY;
         
@@ -30,7 +33,9 @@ namespace Engine {
 
     class ENGINE_API MouseButtonEvent
     {
+
     public:
+
         MouseButtonEvent(int mouseButton)
             : m_mouseButton(mouseButton) {}
         virtual ~MouseButtonEvent() {}
@@ -38,6 +43,7 @@ namespace Engine {
         inline int getButtonCode() const { return m_mouseButton; }
 
     private:
+
         int m_mouseButton;
 
     };
@@ -45,7 +51,9 @@ namespace Engine {
 
     class ENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
     {
+
     public:
+
         MouseButtonPressedEvent(int mouseButton)
             : MouseButtonEvent(mouseButton) {}
         virtual ~MouseButtonPressedEvent() {}
@@ -62,7 +70,9 @@ namespace Engine {
 
     class ENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
     {
+
     public:
+
         MouseButtonReleasedEvent(int mouseButton)
             : MouseButtonEvent(mouseButton) {}
         virtual ~MouseButtonReleasedEvent() {}
@@ -79,7 +89,9 @@ namespace Engine {
 
     class ENGINE_API MouseScrolledEvent
     {
+
     public:
+
         MouseScrolledEvent(double xOffset, double yOffset)
             : m_xOffset(xOffset), m_yOffset(yOffset) {}
 
@@ -94,7 +106,9 @@ namespace Engine {
         }
 
     private:
+
         double m_xOffset, m_yOffset;
+
     };
 
 }

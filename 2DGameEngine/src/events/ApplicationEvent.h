@@ -11,6 +11,13 @@ namespace Engine {
         AppTickEvent() {}
         virtual ~AppTickEvent() {}
 
+        std::string toString() const
+        {
+            std::stringstream ss;
+            ss << "AppTickEvent";
+            return ss.str();
+        }
+
     };
 
 
@@ -20,16 +27,28 @@ namespace Engine {
         AppUpdateEvent() {}
         virtual ~AppUpdateEvent() {}
 
+        std::string toString() const
+        {
+            std::stringstream ss;
+            ss << "AppUpdateEvent";
+            return ss.str();
+        }
+
     };
 
 
-    class ENGINE_API AppRenderEvent : public Event
+    class ENGINE_API AppRenderEvent
     {
     public:
         AppRenderEvent() {}
         virtual ~AppRenderEvent() {}
 
-        EVENT_TYPE(AppRender)
+        std::string toString() const
+        {
+            std::stringstream ss;
+            ss << "AppRenderEvent: ";
+            return ss.str();
+        }
 
     };
 
