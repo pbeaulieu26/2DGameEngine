@@ -481,16 +481,16 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="include\spdlog\spdlog.h" />
     <ClInclude Include="include\spdlog\tweakme.h" />
     <ClInclude Include="include\spdlog\version.h" />
-    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\core\Core.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\events\KeyboardEvent.h" />
     <ClInclude Include="src\events\MouseEvent.h" />
     <ClInclude Include="src\events\WindowEvent.h" />
     <ClInclude Include="src\input\InputManager.h" />
-    <ClInclude Include="src\KeyCodes.h" />
-    <ClInclude Include="src\Log.h" />
-    <ClInclude Include="src\MouseCodes.h" />
+    <ClInclude Include="src\input\KeyCodes.h" />
+    <ClInclude Include="src\core\Log.h" />
+    <ClInclude Include="src\input\MouseCodes.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\rendering\display\DisplayManager.h" />
     <ClInclude Include="src\rendering\entities\Camera.h" />
@@ -649,7 +649,6 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input\GLFWInputManager.cpp" />
-    <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="include\glm\detail\glm.cpp">
@@ -660,7 +659,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     </ClCompile>
     <ClCompile Include="src\input\InputManager.cpp" />
     <ClCompile Include="src\rendering\models\loaders\ObjFileLoader.cpp" />
-    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

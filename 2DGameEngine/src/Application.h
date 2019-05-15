@@ -20,6 +20,8 @@ namespace Engine {
 
         void run();
 
+        void close();
+
     protected:
 
         virtual void onMouseButtonPressedEvent(std::unique_ptr<Event> event);

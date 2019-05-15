@@ -35,8 +35,8 @@ namespace Engine {
     {
 
     public:
-        Event();
-        virtual ~Event();
+        Event() {};
+        virtual ~Event() {};
 
         virtual EventType getEventType() const = 0;
 

@@ -34,6 +34,9 @@ namespace Engine {
     Application::Application()
         : m_eventDispatcher(std::make_unique<EventDispatcher>())
     {
+        Log::Init();
+        LOG_CORE_INFO("Logger initialized");
+
         m_eventDispatcher->registerCallback(EventType::MouseMoved, std::bind(&Application::onMouseMovedEvent, this, std::placeholders::_1));
         m_eventDispatcher->registerCallback(EventType::MouseButtonPressed, std::bind(&Application::onMouseButtonPressedEvent, this, std::placeholders::_1));
         m_eventDispatcher->registerCallback(EventType::MouseButtonReleased, std::bind(&Application::onMouseButtonReleasedEvent, this, std::placeholders::_1));
@@ -110,6 +113,11 @@ namespace Engine {
         }
 
         DisplayManager::closeDisplay();
+    }
+
+    void Application::close()
+    {
+        m_isRunning = false;
     }
 
 

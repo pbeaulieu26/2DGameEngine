@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ObjFileLoader.h"
 #include "rendering/models/Vertex.h"
-#include "Log.h"
+#include "core/Log.h"
 
 #include <sstream>
 #include <fstream>
