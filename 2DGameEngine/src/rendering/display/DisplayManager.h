@@ -1,6 +1,7 @@
 #pragma once
 
-#include "events/Event.h"
+#include "events/EventDispatcher.h"
+#include "WindowSize.h"
 
 
 struct GLFWwindow;
@@ -14,12 +15,6 @@ namespace Engine {
         MANAGER_ERROR = 1
     };
 
-    struct ENGINE_API WindowSize
-    {
-        int width;
-        int height;
-    };
-
     class ENGINE_API DisplayManager
     {
     public:
@@ -30,9 +25,6 @@ namespace Engine {
         static void updateDisplay();
         static void closeDisplay();
         static bool isCloseRequested();
-
-        static void registerResizeCallback(std::function<void(const WindowSize&)> callback);
-        static void registerEventCallback(EventFn callback);
         
         static GLFWwindow* getWindow();
         
@@ -40,9 +32,8 @@ namespace Engine {
 
     private:
 
-        static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
-
         // glfw callbacks
+        static void resizeEventCallback(GLFWwindow* window, int width, int height);
         static void keyEventCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
         static void mouseCursorEventCallback(GLFWwindow* window, double xpos, double ypos);
         static void mouseButtonEventCallback(GLFWwindow* window, int button, int action, int mods);
@@ -53,9 +44,7 @@ namespace Engine {
     private:
 
         static GLFWwindow* m_window;
-        static std::vector<std::function<void(GLFWwindow*)>> m_inputCallbacks;
-        static std::vector < std::function<void(const WindowSize&)>> m_resizeCallbacks;
-        static EventFn m_appEventCallback;
+        static EventDispatcher& m_eventDispatcher;
     };
 
 }

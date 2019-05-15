@@ -12,7 +12,6 @@ namespace Engine {
         initializeGlContext();
         WindowSize windowSize = DisplayManager::getWindowSize();
         createProjectionMatrix(windowSize);
-        DisplayManager::registerResizeCallback(std::bind(&Renderer2D::createProjectionMatrix, this, std::placeholders::_1));
     }
 
     void Renderer2D::initializeGlContext()

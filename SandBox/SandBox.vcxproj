@@ -35,6 +35,9 @@
   <ItemGroup>
     <Image Include="res\forest_texture.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Sandbox.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1F2439E0-72E4-4BE6-9F2F-0069B7252C0D}</ProjectGuid>

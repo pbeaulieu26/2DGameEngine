@@ -1,37 +1,44 @@
 #pragma once
 
+#include "pch.h"
+#include "rendering/display/WindowSize.h"
+
 
 namespace Engine {
 
-    class Event; // Forward declaration
-
-    class ENGINE_API WindowCloseEvent : public Event
+    class ENGINE_API WindowCloseEvent
     {
     public:
         WindowCloseEvent() {}
         virtual ~WindowCloseEvent() {}
 
-        EVENT_TYPE(WindowClose)
-
     };
 
-    class ENGINE_API WindowFocusEvent : public Event
+    class ENGINE_API WindowFocusEvent
     {
     public:
         WindowFocusEvent() {}
         virtual ~WindowFocusEvent() {}
 
-        EVENT_TYPE(WindowFocus)
-
     };
 
-    class ENGINE_API WindowLostFocusEvent : public Event
+    class ENGINE_API WindowLostFocusEvent
     {
     public:
         WindowLostFocusEvent() {}
         virtual ~WindowLostFocusEvent() {}
 
-        EVENT_TYPE(WindowLostFocus)
+    };
+
+    class ENGINE_API WindowResizeEvent
+    {
+    public:
+        WindowResizeEvent(const WindowSize& size) 
+            : size(size) {}
+        virtual ~WindowResizeEvent() {}
+
+    private:
+        WindowSize size;
 
     };
 

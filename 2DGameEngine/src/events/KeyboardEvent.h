@@ -1,11 +1,10 @@
 #pragma once
 
+#include "pch.h"
 
 namespace Engine {
 
-    class Event; // Forward declaration
-
-    class ENGINE_API KeyEvent : public Event
+    class ENGINE_API KeyEvent
     {
     public:
         KeyEvent(int keyCode)
@@ -25,14 +24,12 @@ namespace Engine {
             :KeyEvent(keyCode) {}
         virtual ~KeyPressedEvent() {}
 
-        std::string toString() const override
+        std::string toString() const
         {
             std::stringstream ss;
             ss << "KeyPressedEvent: " << getKeyCode();
             return ss.str();
         }
-
-        EVENT_TYPE(KeyPressed)
 
     };
 
@@ -44,14 +41,12 @@ namespace Engine {
             : KeyEvent(keyCode) {}
         virtual ~KeyReleasedEvent() {}
 
-        std::string toString() const override
+        std::string toString() const
         {
             std::stringstream ss;
             ss << "KeyReleasedEvent: " << getKeyCode();
             return ss.str();
         }
-
-        EVENT_TYPE(KeyReleased)
 
     };
 

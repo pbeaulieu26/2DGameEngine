@@ -1,9 +1,10 @@
 #pragma once
 
-#include "events/Event.h"
-#include "events/EventDispatcher.h"
+#include "events/MouseEvent.h"
+#include "events/KeyboardEvent.h"
+#include "events/WindowEvent.h"
 
-
+class EventDispatcher;
 struct GLFWwindow;
 
 namespace Engine {
@@ -15,6 +16,7 @@ namespace Engine {
     {
 
     public:
+
         Application();
         virtual ~Application();
 
@@ -24,22 +26,19 @@ namespace Engine {
 
     protected:
 
-        virtual void onMouseButtonPressedEvent(std::unique_ptr<Event> event);
-        virtual void onMouseButtonReleasedEvent(std::unique_ptr<Event> event);
-        virtual void onMouseMovedEvent(std::unique_ptr<Event> event);
+        virtual void onMouseButtonPressedEvent(const MouseButtonPressedEvent& event);
+        virtual void onMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event);
+        virtual void onMouseMovedEvent(const MouseScrolledEvent& event);
 
-        virtual void onKeyPressedEvent(std::unique_ptr<Event> event);
-        virtual void onKeyReleasedEvent(std::unique_ptr<Event> event);
+        virtual void onKeyPressedEvent(const KeyPressedEvent& event);
+        virtual void onKeyReleasedEvent(const KeyReleasedEvent& event);
 
-        virtual void onWindowCloseEvent(std::unique_ptr<Event> event);
+        virtual void onWindowCloseEvent(const WindowCloseEvent& event);
 
     private:
 
-        void onEvent(std::unique_ptr<Event> event);
-
         bool m_isRunning;
-        std::unique_ptr<EventDispatcher> m_eventDispatcher;
-        std::vector<std::unique_ptr<Event>> m_events;
+        EventDispatcher& m_eventDispatcher;
 
     };
 

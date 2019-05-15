@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "DisplayManager.h"
-#include "events/Event.h"
 #include "events/KeyboardEvent.h"
 #include "events/MouseEvent.h"
 #include "events/WindowEvent.h"
@@ -13,9 +12,7 @@
 namespace Engine {
 
     GLFWwindow* DisplayManager::m_window = nullptr;
-    std::vector<std::function<void(GLFWwindow*)>> DisplayManager::m_inputCallbacks;
-    std::vector<std::function<void(const WindowSize&)>> DisplayManager::m_resizeCallbacks;
-    EventFn DisplayManager::m_appEventCallback;
+    EventDispatcher& DisplayManager::m_eventDispatcher = EventDispatcher::getInstance();
 
     int DisplayManager::createDisplay(int width, int height)
     {
@@ -33,9 +30,9 @@ namespace Engine {
             return MANAGER_ERROR;
         }
         glfwMakeContextCurrent(m_window);
-        glfwSetFramebufferSizeCallback(m_window, DisplayManager::framebufferSizeCallback);
 
-        glfwSetKeyCallback(m_window, DisplayManager::keyEventCallback);
+        glfwSetFramebufferSizeCallback(m_window, resizeEventCallback);
+        glfwSetKeyCallback(m_window, keyEventCallback);
         glfwSetCursorPosCallback(m_window, mouseCursorEventCallback);
         glfwSetMouseButtonCallback(m_window, mouseButtonEventCallback);
         glfwSetScrollCallback(m_window, mouseScrollEventCallback);
@@ -59,7 +56,6 @@ namespace Engine {
 
     void DisplayManager::closeDisplay()
     {
-        m_resizeCallbacks.clear();
         glfwTerminate();
     }
 
@@ -68,27 +64,14 @@ namespace Engine {
         return glfwWindowShouldClose(m_window);
     }
 
-    void DisplayManager::registerEventCallback(EventFn callback)
-    {
-        m_appEventCallback = callback;
-    }
-
     GLFWwindow * DisplayManager::getWindow()
     {
         return m_window;
     }
 
-    void DisplayManager::registerResizeCallback(std::function<void(const WindowSize&)> callback)
+    void DisplayManager::resizeEventCallback(GLFWwindow* window, int width, int height)
     {
-        m_resizeCallbacks.push_back(callback);
-    }
-
-    void DisplayManager::framebufferSizeCallback(GLFWwindow* window, int width, int height)
-    {
-        for (auto callback : m_resizeCallbacks)
-        {
-            callback(WindowSize{ width, height });
-        }
+        m_eventDispatcher.queueEvent(WindowResizeEvent(WindowSize{width, height}));
 
         glViewport(0, 0, width, height);
     }
@@ -97,53 +80,52 @@ namespace Engine {
     {
         if (action == GLFW_PRESS)
         {
-            m_appEventCallback(std::make_unique<KeyPressedEvent>(key));
+            m_eventDispatcher.queueEvent(KeyPressedEvent(key));
         }
         else if (action == GLFW_RELEASE)
         {
-            m_appEventCallback(std::make_unique<KeyReleasedEvent>(key));
+            m_eventDispatcher.queueEvent(KeyReleasedEvent(key));
         }
     }
 
     void DisplayManager::mouseCursorEventCallback(GLFWwindow* window, double xpos, double ypos)
     {
-        m_appEventCallback(std::make_unique<MouseMovedEvent>(xpos, ypos));
+        m_eventDispatcher.queueEvent(MouseMovedEvent(xpos, ypos));
     }
 
     void DisplayManager::mouseButtonEventCallback(GLFWwindow* window, int button, int action, int mods)
     {
         if (action == GLFW_PRESS)
         {
-            m_appEventCallback(std::make_unique<MouseButtonPressedEvent>(button));
+            m_eventDispatcher.queueEvent(MouseButtonPressedEvent(button));
         }
         else if (action == GLFW_RELEASE)
         {
-            m_appEventCallback(std::make_unique<MouseButtonReleasedEvent>(button));
+            m_eventDispatcher.queueEvent(MouseButtonReleasedEvent(button));
         }
     }
 
     void DisplayManager::mouseScrollEventCallback(GLFWwindow* window, double xoffset, double yoffset)
     {
-        m_appEventCallback(std::make_unique<MouseScrolledEvent>(xoffset, yoffset));
+        m_eventDispatcher.queueEvent(MouseScrolledEvent(xoffset, yoffset));
     }
 
     void DisplayManager::windowCloseEventCallback(GLFWwindow* window)
     {
-        m_appEventCallback(std::make_unique<WindowCloseEvent>());
+        m_eventDispatcher.queueEvent(WindowCloseEvent());
     }
 
     void DisplayManager::windowFocusEventCallback(GLFWwindow* window, int focused)
     {
         if (focused)
         {
-            //m_appEventCallback(WindowFocusEvent());
+            m_eventDispatcher.queueEvent(WindowFocusEvent());
         }
         else
         {
-            //m_appEventCallback(WindowLostFocusEvent());
+            m_eventDispatcher.queueEvent(WindowLostFocusEvent());
         }
     }
-
 
     WindowSize DisplayManager::getWindowSize()
     {

@@ -1,11 +1,10 @@
 #pragma once
 
+#include "pch.h"
 
 namespace Engine {
 
-    class Event; // Forward declaration
-
-    class ENGINE_API MouseMovedEvent : public Event
+    class ENGINE_API MouseMovedEvent
     {
     public:
         MouseMovedEvent(double mouseX, double mouseY)
@@ -15,14 +14,12 @@ namespace Engine {
         inline double getMouseX() const { return m_mouseX; }
         inline double getMouseY() const { return m_mouseY; }
 
-        std::string toString() const override
+        std::string toString() const
         {
             std::stringstream ss;
             ss << "MouseButtonPressedEvent: " << getMouseX() << " " << getMouseY();
             return ss.str();
         }
-
-        EVENT_TYPE(MouseMoved)
 
     private:
         double m_mouseX;
@@ -31,7 +28,7 @@ namespace Engine {
     };
 
 
-    class ENGINE_API MouseButtonEvent : public Event
+    class ENGINE_API MouseButtonEvent
     {
     public:
         MouseButtonEvent(int mouseButton)
@@ -53,14 +50,12 @@ namespace Engine {
             : MouseButtonEvent(mouseButton) {}
         virtual ~MouseButtonPressedEvent() {}
 
-        std::string toString() const override
+        std::string toString() const
         {
             std::stringstream ss;
             ss << "MouseButtonPressedEvent: " << getButtonCode();
             return ss.str();
         }
-
-        EVENT_TYPE(MouseButtonPressed)
 
     };
 
@@ -72,19 +67,17 @@ namespace Engine {
             : MouseButtonEvent(mouseButton) {}
         virtual ~MouseButtonReleasedEvent() {}
 
-        std::string toString() const override
+        std::string toString() const
         {
             std::stringstream ss;
             ss << "MouseButtonReleasedEvent: " << getButtonCode();
             return ss.str();
         }
 
-        EVENT_TYPE(MouseButtonReleased)
-
     };
 
 
-    class ENGINE_API MouseScrolledEvent : public Event
+    class ENGINE_API MouseScrolledEvent
     {
     public:
         MouseScrolledEvent(double xOffset, double yOffset)
@@ -93,14 +86,12 @@ namespace Engine {
         inline double GetXOffset() const { return m_xOffset; }
         inline double GetYOffset() const { return m_yOffset; }
 
-        std::string toString() const override
+        std::string toString() const
         {
             std::stringstream ss;
             ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
             return ss.str();
         }
-
-        EVENT_TYPE(MouseScrolled)
 
     private:
         double m_xOffset, m_yOffset;

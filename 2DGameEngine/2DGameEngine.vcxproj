@@ -179,9 +179,8 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\events\ApplicationEvent.h" />
-    <ClInclude Include="src\input\GLFWInputManager.h" />
-    <ClInclude Include="src\events\Event.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
+    <ClInclude Include="src\input\GLFWInputManager.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\glad\glad_glx.h" />
@@ -493,6 +492,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\input\MouseCodes.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\rendering\display\DisplayManager.h" />
+    <ClInclude Include="src\rendering\display\WindowSize.h" />
     <ClInclude Include="src\rendering\entities\Camera.h" />
     <ClInclude Include="src\rendering\entities\Entity.h" />
     <ClInclude Include="src\rendering\entities\GuiEntity.h" />
@@ -648,8 +648,8 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <None Include="include\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\input\GLFWInputManager.cpp" />
     <ClCompile Include="src\events\EventDispatcher.cpp" />
+    <ClCompile Include="src\input\GLFWInputManager.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="include\glm\detail\glm.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

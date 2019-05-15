@@ -1,28 +1,24 @@
 #pragma once
 
+#include "pch.h"
+
 
 namespace Engine {
 
-    class Event; // Forward declaration
-
-    class ENGINE_API AppTickEvent : public Event
+    class ENGINE_API AppTickEvent
     {
     public:
         AppTickEvent() {}
         virtual ~AppTickEvent() {}
 
-        EVENT_TYPE(AppTick)
-
     };
 
 
-    class ENGINE_API AppUpdateEvent : public Event
+    class ENGINE_API AppUpdateEvent
     {
     public:
         AppUpdateEvent() {}
         virtual ~AppUpdateEvent() {}
-
-        EVENT_TYPE(AppUpdate)
 
     };
 

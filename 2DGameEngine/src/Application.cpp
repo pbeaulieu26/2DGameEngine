@@ -2,10 +2,6 @@
 
 #include "Application.h"
 #include "events/EventDispatcher.h"
-#include "events/Event.h"
-#include "events/MouseEvent.h"
-#include "events/KeyboardEvent.h"
-#include "events/WindowEvent.h"
 #include "input/GLFWInputManager.h"
 
 #include "rendering/display/DisplayManager.h"
@@ -32,17 +28,17 @@
 namespace Engine {
 
     Application::Application()
-        : m_eventDispatcher(std::make_unique<EventDispatcher>())
+        : m_eventDispatcher(EventDispatcher::getInstance())
     {
         Log::Init();
         LOG_CORE_INFO("Logger initialized");
 
-        m_eventDispatcher->registerCallback(EventType::MouseMoved, std::bind(&Application::onMouseMovedEvent, this, std::placeholders::_1));
-        m_eventDispatcher->registerCallback(EventType::MouseButtonPressed, std::bind(&Application::onMouseButtonPressedEvent, this, std::placeholders::_1));
-        m_eventDispatcher->registerCallback(EventType::MouseButtonReleased, std::bind(&Application::onMouseButtonReleasedEvent, this, std::placeholders::_1));
-        m_eventDispatcher->registerCallback(EventType::KeyPressed, std::bind(&Application::onKeyPressedEvent, this, std::placeholders::_1));
-        m_eventDispatcher->registerCallback(EventType::KeyReleased, std::bind(&Application::onKeyReleasedEvent, this, std::placeholders::_1));
-        m_eventDispatcher->registerCallback(EventType::WindowClose, std::bind(&Application::onWindowCloseEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<MouseScrolledEvent>(std::bind(&Application::onMouseMovedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<MouseButtonPressedEvent>(std::bind(&Application::onMouseButtonPressedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<MouseButtonReleasedEvent>(std::bind(&Application::onMouseButtonReleasedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<KeyPressedEvent>(std::bind(&Application::onKeyPressedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<KeyReleasedEvent>(std::bind(&Application::onKeyReleasedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<WindowCloseEvent>(std::bind(&Application::onWindowCloseEvent, this, std::placeholders::_1));
 
         int code = DisplayManager::createDisplay(SCREEN_WIDTH, SCREEN_HEIGHT);
         if (code != MANAGER_SUCCESS)
@@ -51,8 +47,6 @@ namespace Engine {
             std::cin.get();
             exit(code);
         }
-
-        DisplayManager::registerEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 
         InputManager::setInputManager(std::make_unique<GLFWInputManager>(DisplayManager::getWindow()));
     }
@@ -87,12 +81,7 @@ namespace Engine {
         while (m_isRunning)
         {
             // handle events
-            for (std::unique_ptr<Event>& event : m_events)
-            {
-                // dispatch events based on type
-                m_eventDispatcher->dispatchEvent(std::move(event));
-            }
-            m_events.clear();
+            m_eventDispatcher.dispatchEvents();
 
             // update window
 
@@ -121,51 +110,38 @@ namespace Engine {
     }
 
 
-    void Application::onEvent(std::unique_ptr<Event> event)
+    void Application::onMouseButtonPressedEvent(const MouseButtonPressedEvent& event)
     {
-        m_events.push_back(std::move(event));
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
 
-    void Application::onMouseButtonPressedEvent(std::unique_ptr<Event> event)
+    void Application::onMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event)
     {
-        const MouseButtonPressedEvent* mouseMovedEvent = dynamic_cast<const MouseButtonPressedEvent*>(event.get());
-        std::string st = event->toString();
-        LOG_CORE_WARN("Unhandled : {0}", event->toString());
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
 
-    void Application::onMouseButtonReleasedEvent(std::unique_ptr<Event> event)
+    void Application::onMouseMovedEvent(const MouseScrolledEvent& event)
     {
-        const MouseButtonReleasedEvent* mouseMovedEvent = dynamic_cast<const MouseButtonReleasedEvent*>(event.get());
-        LOG_CORE_WARN("Unhandled : {0}", event->toString());
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
 
-    void Application::onMouseMovedEvent(std::unique_ptr<Event> event)
+    void Application::onKeyPressedEvent(const KeyPressedEvent& event)
     {
-        const MouseMovedEvent* mouseMovedEvent = dynamic_cast<const MouseMovedEvent*>(event.get());
-        LOG_CORE_WARN("Unhandled : {0}", event->toString());
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
 
-    void Application::onKeyPressedEvent(std::unique_ptr<Event> event)
+    void Application::onKeyReleasedEvent(const KeyReleasedEvent& event)
     {
-        const KeyPressedEvent* mouseMovedEvent = dynamic_cast<const KeyPressedEvent*>(event.get());
-        LOG_CORE_WARN("Unhandled : {0}", event->toString());
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
 
-    void Application::onKeyReleasedEvent(std::unique_ptr<Event> event)
+    void Application::onWindowCloseEvent(const WindowCloseEvent& event)
     {
-        const KeyReleasedEvent* mouseMovedEvent = dynamic_cast<const KeyReleasedEvent*>(event.get());
-        LOG_CORE_WARN("Unhandled : {0}", event->toString());
-    }
-
-
-    void Application::onWindowCloseEvent(std::unique_ptr<Event> event)
-    {
-        const WindowCloseEvent* mouseMovedEvent = dynamic_cast<const WindowCloseEvent*>(event.get());
         m_isRunning = false;
     }
 
