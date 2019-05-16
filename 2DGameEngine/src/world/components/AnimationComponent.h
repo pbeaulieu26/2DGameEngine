@@ -1,16 +1,18 @@
 #pragma once
 
-#include "Component.h"
+#include "BaseComponent.h"
 
 
 namespace Engine {
 
-    class ENGINE_API AnimationComponent : public Component
+    class ENGINE_API AnimationComponent : public BaseComponent
     {
 
     public:
         AnimationComponent();
         ~AnimationComponent();
+
+        COMPONENT_INFO("AnimationComponent")
 
     };
 

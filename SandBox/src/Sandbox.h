@@ -7,8 +7,8 @@
 class SandBox : public Engine::Application
 {
 public:
-    SandBox() {};
-    virtual ~SandBox() {};
+    SandBox();
+    virtual ~SandBox();
 
     void onMouseButtonPressedEvent(const Engine::MouseButtonPressedEvent& event) override;
     void onMouseButtonReleasedEvent(const Engine::MouseButtonReleasedEvent& event) override;

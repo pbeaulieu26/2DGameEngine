@@ -5,6 +5,14 @@ Engine::Application* Engine::CreateApplication()
     return new SandBox();
 }
 
+SandBox::SandBox()
+{
+}
+
+SandBox::~SandBox()
+{
+}
+
 void SandBox::onMouseButtonPressedEvent(const Engine::MouseButtonPressedEvent& event)
 {
 }

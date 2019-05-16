@@ -182,7 +182,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\world\scene\Scene.h" />
     <ClInclude Include="src\world\components\AnimationComponent.h" />
     <ClInclude Include="src\world\components\CollisionComponent.h" />
-    <ClInclude Include="src\world\components\Component.h" />
+    <ClInclude Include="src\world\components\BaseComponent.h" />
     <ClInclude Include="src\world\components\RenderComponent.h" />
     <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
@@ -659,7 +659,6 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClCompile Include="src\world\GameObject.cpp" />
     <ClCompile Include="src\world\scene\Scene.cpp" />
     <ClCompile Include="src\world\components\AnimationComponent.cpp" />
-    <ClCompile Include="src\world\components\Component.cpp" />
     <ClCompile Include="src\world\components\RenderComponent.cpp" />
     <ClCompile Include="src\input\GLFWInputManager.cpp" />
     <ClCompile Include="src\world\components\CollisionComponent.cpp" />

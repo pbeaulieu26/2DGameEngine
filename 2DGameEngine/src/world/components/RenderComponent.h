@@ -1,15 +1,18 @@
 #pragma once
-#include "Component.h"
+
+#include "BaseComponent.h"
 
 
 namespace Engine {
 
-    class ENGINE_API RenderComponent : public Component
+    class ENGINE_API RenderComponent : public BaseComponent
     {
 
     public:
         RenderComponent();
-        virtual ~RenderComponent();
+        ~RenderComponent();
+
+        COMPONENT_INFO("RenderComponent")
 
     };
 

@@ -1,16 +1,18 @@
 #pragma once
 
-#include "Component.h"
+#include "BaseComponent.h"
 
 
 namespace Engine {
 
-    class ENGINE_API CollisionComponent : public Component
+    class ENGINE_API CollisionComponent : public BaseComponent
     {
 
     public:
         CollisionComponent();
-        virtual ~CollisionComponent();
+        ~CollisionComponent();
+
+        COMPONENT_INFO("CollisionComponent")
 
     };
 
