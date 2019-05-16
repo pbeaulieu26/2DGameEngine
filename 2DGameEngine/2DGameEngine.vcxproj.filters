@@ -1020,6 +1020,30 @@
     <ClInclude Include="src\rendering\display\WindowSize.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\world\components\TransformComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+      <Filter>Header Files</Filter>
+    <ClInclude Include="src\world\components\AnimationComponent.h">
+    </ClInclude>
+    <ClInclude Include="src\world\components\CollisionComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\components\Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\components\RenderComponent.h">
+    </ClInclude>
+      <Filter>Header Files</Filter>
+    <ClInclude Include="src\world\scene\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\GameObject.h">
+      <Filter>Header Files</Filter>
+    <ClInclude Include="src\world\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\glm\detail\func_common.inl">
@@ -1490,6 +1514,30 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\components\AnimationComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\components\CollisionComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\components\Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\components\RenderComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\components\TransformComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\scene\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\events\EventDispatcher.cpp">

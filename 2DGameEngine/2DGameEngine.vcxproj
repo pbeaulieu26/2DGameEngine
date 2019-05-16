@@ -178,6 +178,12 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\world\GameObject.h" />
+    <ClInclude Include="src\world\scene\Scene.h" />
+    <ClInclude Include="src\world\components\AnimationComponent.h" />
+    <ClInclude Include="src\world\components\CollisionComponent.h" />
+    <ClInclude Include="src\world\components\Component.h" />
+    <ClInclude Include="src\world\components\RenderComponent.h" />
     <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
     <ClInclude Include="src\input\GLFWInputManager.h" />
@@ -513,6 +519,8 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\rendering\textures\animations\AnimationUpdater.h" />
     <ClInclude Include="src\rendering\textures\TextureLoader.h" />
     <ClInclude Include="src\rendering\utils\Maths.h" />
+    <ClInclude Include="src\world\components\TransformComponent.h" />
+    <ClInclude Include="src\world\World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\glm\detail\func_common.inl" />
@@ -648,8 +656,14 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <None Include="include\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\events\EventDispatcher.cpp" />
+    <ClCompile Include="src\world\GameObject.cpp" />
+    <ClCompile Include="src\world\scene\Scene.cpp" />
+    <ClCompile Include="src\world\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\world\components\Component.cpp" />
+    <ClCompile Include="src\world\components\RenderComponent.cpp" />
     <ClCompile Include="src\input\GLFWInputManager.cpp" />
+    <ClCompile Include="src\world\components\CollisionComponent.cpp" />
+    <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="include\glm\detail\glm.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -704,6 +718,8 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClCompile Include="src\rendering\textures\animations\AnimationUpdater.cpp" />
     <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
     <ClCompile Include="src\rendering\utils\Maths.cpp" />
+    <ClCompile Include="src\world\components\TransformComponent.cpp" />
+    <ClCompile Include="src\world\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />
