@@ -379,6 +379,7 @@
     <ClInclude Include="src\world\components\TransformComponent.h" />
     <ClInclude Include="src\world\World.h" />
     <ClInclude Include="src\world\components\BaseComponent.h" />
+    <ClInclude Include="src\utils\Vector2d.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />

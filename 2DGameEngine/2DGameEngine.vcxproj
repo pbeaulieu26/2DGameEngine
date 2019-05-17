@@ -521,6 +521,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\rendering\utils\Maths.h" />
     <ClInclude Include="src\world\components\TransformComponent.h" />
     <ClInclude Include="src\world\World.h" />
+    <ClInclude Include="src\utils\Vector2d.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\glm\detail\func_common.inl" />
