@@ -7,19 +7,22 @@ namespace Engine {
 
     typedef std::unordered_map<std::size_t, BaseComponent*> IdToComponentPtrMap;
 
-    class ENGINE_API GameObject
+    class ENGINE_API Entity
     {
 
     public:
 
-        GameObject();
-        virtual ~GameObject();
+        Entity() = delete;
+        Entity(int id);
+        virtual ~Entity();
+
+        const int getId() const { return m_id; }
 
         template<class T, typename ... TArgs>
         T* addComponent(TArgs&&... args)
         {
             T* component = new T(std::forward<TArgs>(args)...);
-            auto res = m_componentMap.insert(MyMap::value_type(T::getStaticId(), component));
+            auto res = m_componentMap.insert(m_componentMap::value_type(T::getStaticId(), component));
 
             ENGINE_CORE_ASSERT(res.second, "Component already exists");
             return component;
@@ -32,7 +35,7 @@ namespace Engine {
             auto it = m_componentMap.find(T::getStaticType());
             if (it != m_componentMap.end())
             {
-                return *it;
+                return it->second;
             }
             else
             {
@@ -54,6 +57,7 @@ namespace Engine {
 
     private:
 
+        int m_id;
         IdToComponentPtrMap m_componentMap;
 
     };

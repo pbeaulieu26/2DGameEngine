@@ -1,5 +1,7 @@
 #pragma once
 
+#include "entity/EntityManager.h"
+
 
 namespace Engine {
 
@@ -7,6 +9,7 @@ namespace Engine {
     {
 
     public:
+
         World();
         ~World();
 

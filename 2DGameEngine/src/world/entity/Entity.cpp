@@ -1,15 +1,16 @@
 #include "pch.h"
-#include "GameObject.h"
+#include "Entity.h"
 
 
 namespace Engine {
 
-    GameObject::GameObject()
+    Entity::Entity(int id)
+        : m_id(id)
     {
     }
 
 
-    GameObject::~GameObject()
+    Entity::~Entity()
     {
         for (auto it = m_componentMap.begin(); it != m_componentMap.end(); ++it)
         {

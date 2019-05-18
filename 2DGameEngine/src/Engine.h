@@ -8,12 +8,12 @@
 #include "input/MouseCodes.h"
 
 #include "world/World.h"
-#include "world/GameObject.h"
+#include "world/entity/Entity.h"
 #include "world/scene/Scene.h"
-#include "world/components/BaseComponent.h"
-#include "world/components/AnimationComponent.h"
-#include "world/components/CollisionComponent.h"
-#include "world/components/RenderComponent.h"
-#include "world/components/TransformComponent.h"
+#include "world/entity/components/BaseComponent.h"
+#include "world/entity/components/AnimationComponent.h"
+#include "world/entity/components/CollisionComponent.h"
+#include "world/entity/components/RenderComponent.h"
+#include "world/entity/components/TransformComponent.h"
 
 #include "EntryPoint.h"
