@@ -12,12 +12,12 @@ namespace Engine
         return TexturedModel{ rawModel, m_textureLoader.loadTexture(textureFile.c_str()) };
     }
 
-    void RenderEngine::registerEntity(const Entity& entity)
+    void RenderEngine::registerEntity(const RenderEntity& entity)
     {
         auto iter = m_entities.find(entity.texturedModel);
         if (iter == m_entities.end())
         {
-            m_entities[entity.texturedModel] = std::vector<Entity>{ entity };
+            m_entities[entity.texturedModel] = std::vector<RenderEntity>{ entity };
         }
         else
         {

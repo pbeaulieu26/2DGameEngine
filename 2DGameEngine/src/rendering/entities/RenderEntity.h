@@ -5,11 +5,11 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 
-struct ENGINE_API Entity
+struct ENGINE_API RenderEntity
 {
 public:
 
-    Entity() = default;
+    RenderEntity() = default;
 
     TexturedModel texturedModel;
     glm::vec2 position;

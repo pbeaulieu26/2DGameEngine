@@ -13,7 +13,7 @@
 #include "rendering/renderers/GuiRenderer.h"
 #include "rendering/renderers/Renderer2D.h"
 #include "rendering/entities/GuiEntity.h"
-#include "rendering/entities/Entity.h"
+#include "rendering/entities/RenderEntity.h"
 #include "rendering/entities/Camera.h"
 #include "rendering/models/ModelData.h"
 #include "rendering/models/loaders/ObjFileLoader.h"
