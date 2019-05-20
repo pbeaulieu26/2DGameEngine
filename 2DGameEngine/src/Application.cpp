@@ -34,12 +34,12 @@ namespace Engine {
         Log::Init();
         LOG_CORE_INFO("Logger initialized");
 
-        m_eventDispatcher.registerCallback<MouseScrolledEvent>(std::bind(&Application::onMouseMovedEvent, this, std::placeholders::_1));
-        m_eventDispatcher.registerCallback<MouseButtonPressedEvent>(std::bind(&Application::onMouseButtonPressedEvent, this, std::placeholders::_1));
-        m_eventDispatcher.registerCallback<MouseButtonReleasedEvent>(std::bind(&Application::onMouseButtonReleasedEvent, this, std::placeholders::_1));
-        m_eventDispatcher.registerCallback<KeyPressedEvent>(std::bind(&Application::onKeyPressedEvent, this, std::placeholders::_1));
-        m_eventDispatcher.registerCallback<KeyReleasedEvent>(std::bind(&Application::onKeyReleasedEvent, this, std::placeholders::_1));
-        m_eventDispatcher.registerCallback<WindowCloseEvent>(std::bind(&Application::onWindowCloseEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<MouseScrolledEvent>(std::bind(&Application::onApplicationMouseMovedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<MouseButtonPressedEvent>(std::bind(&Application::onApplicationMouseButtonPressedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<MouseButtonReleasedEvent>(std::bind(&Application::onApplicationMouseButtonReleasedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<KeyPressedEvent>(std::bind(&Application::onApplicationKeyPressedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<KeyReleasedEvent>(std::bind(&Application::onApplicationKeyReleasedEvent, this, std::placeholders::_1));
+        m_eventDispatcher.registerCallback<WindowCloseEvent>(std::bind(&Application::onApplicationWindowCloseEvent, this, std::placeholders::_1));
 
         int code = DisplayManager::createDisplay(SCREEN_WIDTH, SCREEN_HEIGHT);
         if (code != MANAGER_SUCCESS)
@@ -52,11 +52,9 @@ namespace Engine {
         InputManager::setInputManager(std::make_unique<GLFWInputManager>(DisplayManager::getWindow()));
     }
 
-
     Application::~Application()
     {
     }
-
 
     void Application::run()
     {
@@ -100,45 +98,75 @@ namespace Engine {
         m_isRunning = false;
     }
 
-
     void Application::onMouseButtonPressedEvent(const MouseButtonPressedEvent& event)
     {
         LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
-
-
+    
     void Application::onMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event)
     {
         LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
-
 
     void Application::onMouseMovedEvent(const MouseScrolledEvent& event)
     {
         LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
-
     void Application::onKeyPressedEvent(const KeyPressedEvent& event)
     {
         LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
-
 
     void Application::onKeyReleasedEvent(const KeyReleasedEvent& event)
     {
         LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
-
-    void Application::onWindowCloseEvent(const WindowCloseEvent& event)
-    {
-        m_isRunning = false;
-    }
-
     void Application::onAppUpdateEvent(const AppUpdateEvent & event)
     {
         LOG_CORE_WARN("Unhandled : {0}", event.toString());
+    }
+
+    void Application::onWindowCloseEvent(const WindowCloseEvent& event)
+    {
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
+    }
+
+    void Application::onApplicationMouseButtonPressedEvent(const MouseButtonPressedEvent& event)
+    {
+        onMouseButtonPressedEvent(event);
+    }
+
+    void Application::onApplicationMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event)
+    {
+        onMouseButtonReleasedEvent(event);
+    }
+
+    void Application::onApplicationMouseMovedEvent(const MouseScrolledEvent& event)
+    {
+        onApplicationMouseMovedEvent(event);
+    }
+
+    void Application::onApplicationKeyPressedEvent(const KeyPressedEvent& event)
+    {
+        onKeyPressedEvent(event);
+    }
+
+    void Application::onApplicationKeyReleasedEvent(const KeyReleasedEvent& event)
+    {
+        onKeyReleasedEvent(event);
+    }
+
+    void Application::onApplicationAppUpdateEvent(const AppUpdateEvent & event)
+    {
+        onAppUpdateEvent(event);
+    }
+
+    void Application::onApplicationWindowCloseEvent(const WindowCloseEvent& event)
+    {
+        onWindowCloseEvent(event);
+        m_isRunning = false;
     }
 
 }

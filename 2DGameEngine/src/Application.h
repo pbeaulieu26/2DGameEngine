@@ -41,6 +41,18 @@ namespace Engine {
 
     private:
 
+        void onApplicationMouseButtonPressedEvent(const MouseButtonPressedEvent& event);
+        void onApplicationMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event);
+        void onApplicationMouseMovedEvent(const MouseScrolledEvent& event);
+
+        void onApplicationKeyPressedEvent(const KeyPressedEvent& event);
+        void onApplicationKeyReleasedEvent(const KeyReleasedEvent& event);
+
+        void onApplicationWindowCloseEvent(const WindowCloseEvent& event);
+
+        void onApplicationAppUpdateEvent(const AppUpdateEvent& event);
+
+
         bool m_isRunning;
         EventDispatcher& m_eventDispatcher;
 
