@@ -12,8 +12,6 @@ namespace Engine {
 
     public:
 
-        Entity() = delete;
-        Entity(int id);
         virtual ~Entity();
 
         const int getId() const { return m_id; }
@@ -54,6 +52,10 @@ namespace Engine {
                 m_componentMap.erase(it);
             }
         }
+
+    protected:
+
+        Entity();
 
     private:
 

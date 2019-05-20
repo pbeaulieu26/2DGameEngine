@@ -4,9 +4,11 @@
 
 namespace Engine {
 
-    Entity::Entity(int id)
-        : m_id(id)
+    Entity::Entity()
     {
+        static int m_idCounter = 0;
+
+        m_id = m_idCounter++;
     }
 
 

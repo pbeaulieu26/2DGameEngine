@@ -1,6 +1,5 @@
 #pragma once
 
-#include "entity/EntityManager.h"
 #include "scene/Scene.h"
 
 

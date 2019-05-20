@@ -178,7 +178,6 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\world\entity\EntityManager.h" />
     <ClInclude Include="src\world\entity\Entity.h" />
     <ClInclude Include="src\world\scene\Scene.h" />
     <ClInclude Include="src\world\entity\components\AnimationComponent.h" />

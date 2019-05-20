@@ -13,18 +13,12 @@ namespace Engine {
 
     Scene::~Scene()
     {
-        for (auto it = m_entities.begin(); it != m_entities.end(); ++it)
-        {
-            it->second.reset();
-        }
-
-        m_entities.clear();
     }
 
 
-    void Scene::addEntity(std::unique_ptr<Entity> entity)
+    void Scene::addEntity(std::shared_ptr<Entity> entity)
     {
-        m_entities[entity->getId()] = std::move(entity);
+        m_entities[entity->getId()] = entity;
     }
 
 

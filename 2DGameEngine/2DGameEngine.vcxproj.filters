@@ -380,7 +380,6 @@
     <ClInclude Include="src\world\entity\components\RenderComponent.h" />
     <ClInclude Include="src\world\entity\components\TransformComponent.h" />
     <ClInclude Include="src\world\entity\Entity.h" />
-    <ClInclude Include="src\world\entity\EntityManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />

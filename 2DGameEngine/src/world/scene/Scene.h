@@ -16,7 +16,7 @@ namespace Engine {
 
         inline std::string getName() { return m_name; }
 
-        void addEntity(std::unique_ptr<Entity> entity);
+        void addEntity(std::shared_ptr<Entity> entity);
         void removeEntity(int entityId);
 
         template<typename T>
