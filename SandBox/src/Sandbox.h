@@ -1,14 +1,17 @@
 #pragma once
 
+#include "ExampleEntity.h"
+
 #include <Engine.h>
-#include <GLFW/glfw3.h>
 
 
 class SandBox : public Engine::Application
 {
+
 public:
-    SandBox() {};
-    virtual ~SandBox() {};
+
+    SandBox();
+    virtual ~SandBox();
 
     void onMouseButtonPressedEvent(const Engine::MouseButtonPressedEvent& event) override;
     void onMouseButtonReleasedEvent(const Engine::MouseButtonReleasedEvent& event) override;
@@ -18,4 +21,9 @@ public:
     void onKeyReleasedEvent(const Engine::KeyReleasedEvent& event) override;
 
     void onAppUpdateEvent(const Engine::AppUpdateEvent & event) override;
+
+private:
+
+    std::shared_ptr<ExampleEntity> m_player;
+
 };

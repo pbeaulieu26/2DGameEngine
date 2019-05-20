@@ -3,7 +3,7 @@
 #include "rendering/models/loaders/VertexObjectLoader.h"
 #include "rendering/models/TexturedModel.h"
 #include "rendering/entities/AnimatedEntity.h"
-#include "rendering/entities/Entity.h"
+#include "rendering/entities/RenderEntity.h"
 #include "rendering/textures/TextureLoader.h"
 #include "rendering/renderers/Renderer2D.h"
 #include "rendering/entities/Camera.h"
@@ -23,7 +23,7 @@ namespace Engine
 
         TexturedModel createTexturedModel(const std::string& modelFile, const std::string& textureFile);
 
-        void registerEntity(const Entity& entity);
+        void registerEntity(const RenderEntity& entity);
         void registerAnimatedEntity(const AnimatedEntity& animatedEntity, bool animate = true);
         void renderEntities(const Camera& camera, bool animateEntities);
 
@@ -35,7 +35,7 @@ namespace Engine
         VertexObjectLoader m_vertexObjectLoader;
 
         std::unordered_map<TexturedModel, std::vector<AnimatedEntity>, TexturedModel::Hasher> m_animatedEntities;
-        std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher> m_entities;
+        std::unordered_map<TexturedModel, std::vector<RenderEntity>, TexturedModel::Hasher> m_entities;
     };
 
 }

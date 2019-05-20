@@ -1,5 +1,4 @@
 #pragma once
-#pragma warning(disable: 4251)
 
 #include <iostream>
 #include <fstream>
@@ -14,5 +13,4 @@
 #include <map>
 #include <unordered_map>
 
-#include "core/Core.h"
-#include "core/Log.h"
+#include <Engine.h>

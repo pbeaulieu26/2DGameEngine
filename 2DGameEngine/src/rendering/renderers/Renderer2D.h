@@ -3,7 +3,7 @@
 #include "rendering/shaders/Shader2D.h"
 #include "rendering/models/loaders/VertexObjectLoader.h"
 #include "rendering/entities/Camera.h"
-#include "rendering/entities/Entity.h"
+#include "rendering/entities/RenderEntity.h"
 #include "rendering/entities/AnimatedEntity.h"
 #include "rendering/models/TexturedModel.h"
 #include "rendering/display/DisplayManager.h"
@@ -16,7 +16,7 @@ namespace Engine {
 
         Renderer2D();
 
-        void render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities, const Camera& camera);
+        void render(const std::unordered_map<TexturedModel, std::vector<RenderEntity>, TexturedModel::Hasher>& entities, const Camera& camera);
         void render(const std::unordered_map<TexturedModel, std::vector<AnimatedEntity>, TexturedModel::Hasher>& entities, const Camera& camera);
 
         Renderer2D(const Renderer2D&) = delete;

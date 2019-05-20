@@ -23,7 +23,7 @@ namespace Engine {
         glActiveTexture(GL_TEXTURE0);
     }
 
-    void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<Entity>, TexturedModel::Hasher>& entities, const Camera& camera)
+    void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<RenderEntity>, TexturedModel::Hasher>& entities, const Camera& camera)
     {
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
@@ -39,10 +39,10 @@ namespace Engine {
         for (auto iter : entities)
         {
             const TexturedModel& texturedModel = iter.first;
-            const std::vector<Entity>& batch = iter.second;
+            const std::vector<RenderEntity>& batch = iter.second;
             prepareTexturedModel(texturedModel);
 
-            for (const Entity& entity : batch)
+            for (const RenderEntity& entity : batch)
             {
                 glm::mat4 transformationMatrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
                 m_shader.loadTransformationMatrix(transformationMatrix);
