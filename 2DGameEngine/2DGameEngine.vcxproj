@@ -658,7 +658,6 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <None Include="include\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\world\entity\EntityManager.cpp" />
     <ClCompile Include="src\world\entity\Entity.cpp" />
     <ClCompile Include="src\world\scene\Scene.cpp" />
     <ClCompile Include="src\world\entity\components\AnimationComponent.cpp" />

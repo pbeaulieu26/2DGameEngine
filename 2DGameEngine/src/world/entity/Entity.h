@@ -19,7 +19,7 @@ namespace Engine {
         const int getId() const { return m_id; }
 
         template<class T, typename ... TArgs>
-        T* addComponent(TArgs&&... args)
+        T* createComponent(TArgs&&... args)
         {
             T* component = new T(std::forward<TArgs>(args)...);
             auto res = m_componentMap.insert(m_componentMap::value_type(T::getStaticId(), component));
@@ -45,7 +45,7 @@ namespace Engine {
 
 
         template<typename T>
-        T* removeComponent()
+        void removeComponent()
         {
             auto it = m_componentMap.find(T::getStaticType());
             if (it != m_componentMap.end())

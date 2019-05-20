@@ -1,6 +1,7 @@
 #pragma once
 
 #include "entity/EntityManager.h"
+#include "scene/Scene.h"
 
 
 namespace Engine {
@@ -10,8 +11,30 @@ namespace Engine {
 
     public:
 
+        World(World const&) = delete;
+        void operator=(World const&) = delete;
+
+        static World& getInstance()
+        {
+            static World instance;
+            
+            return instance;
+        }
+
+        std::shared_ptr<Scene> createScene(std::string sceneName);
+
+        void deleteScene(std::string sceneName);
+
+        void setCurrentScene(std::string sceneName);
+
+        std::shared_ptr<Scene> getCurrentScene();
+
+    private:
+
         World();
-        ~World();
+
+        std::shared_ptr<Scene> m_currentScene;
+        std::unordered_map<std::string, std::shared_ptr<Scene>> m_scenes;
 
     };
 

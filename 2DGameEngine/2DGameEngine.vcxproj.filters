@@ -34,7 +34,6 @@
     <ClCompile Include="src\world\entity\components\RenderComponent.cpp" />
     <ClCompile Include="src\world\entity\components\TransformComponent.cpp" />
     <ClCompile Include="src\world\entity\Entity.cpp" />
-    <ClCompile Include="src\world\entity\EntityManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\world\scene\Scene.h" />
