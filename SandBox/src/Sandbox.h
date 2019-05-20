@@ -16,4 +16,6 @@ public:
 
     void onKeyPressedEvent(const Engine::KeyPressedEvent& event) override;
     void onKeyReleasedEvent(const Engine::KeyReleasedEvent& event) override;
+
+    void onAppUpdateEvent(const Engine::AppUpdateEvent & event) override;
 };

@@ -3,6 +3,8 @@
 #include "events/MouseEvent.h"
 #include "events/KeyboardEvent.h"
 #include "events/WindowEvent.h"
+#include "events/ApplicationEvent.h"
+
 
 class EventDispatcher;
 struct GLFWwindow;
@@ -34,6 +36,8 @@ namespace Engine {
         virtual void onKeyReleasedEvent(const KeyReleasedEvent& event);
 
         virtual void onWindowCloseEvent(const WindowCloseEvent& event);
+
+        virtual void onAppUpdateEvent(const AppUpdateEvent& event);
 
     private:
 

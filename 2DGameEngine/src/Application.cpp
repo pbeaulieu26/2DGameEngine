@@ -80,6 +80,9 @@ namespace Engine {
             // handle events
             m_eventDispatcher.dispatchEvents();
 
+            // update logic
+            onAppUpdateEvent(AppUpdateEvent());
+
             // update window
             bool updateAnimation = !(bool) (++counter %= 6);
             renderEngine.renderEntities(camera, updateAnimation);
@@ -131,6 +134,11 @@ namespace Engine {
     void Application::onWindowCloseEvent(const WindowCloseEvent& event)
     {
         m_isRunning = false;
+    }
+
+    void Application::onAppUpdateEvent(const AppUpdateEvent & event)
+    {
+        LOG_CORE_WARN("Unhandled : {0}", event.toString());
     }
 
 }
