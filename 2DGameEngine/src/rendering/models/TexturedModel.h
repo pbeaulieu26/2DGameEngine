@@ -10,7 +10,7 @@ struct ENGINE_API TexturedModel
 {
 public:
 
-    struct Hasher
+    struct ENGINE_API Hasher
     {
         std::size_t operator()(const TexturedModel& texturedModel) const;
     };

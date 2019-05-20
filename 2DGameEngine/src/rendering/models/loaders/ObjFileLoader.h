@@ -6,7 +6,7 @@ class ENGINE_API ObjFileLoader
 {
 public:
 
-    static ModelData loadOBJ(const std::string& objFileName, int subTextureSize = 1);
+    static ModelData loadOBJ(const std::string& objFileName);
 
 private:
 

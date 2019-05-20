@@ -7,7 +7,7 @@
 #include <fstream>
 
 
-ModelData ObjFileLoader::loadOBJ(const std::string& objFileName, int subTextureSize)
+ModelData ObjFileLoader::loadOBJ(const std::string& objFileName)
 {
     std::ifstream objFile(objFileName);
 
@@ -57,8 +57,8 @@ ModelData ObjFileLoader::loadOBJ(const std::string& objFileName, int subTextureS
         modelData.positions.push_back(vertex.x);
         modelData.positions.push_back(vertex.y);
         const glm::vec2& texture = textures[vertex.textureIndex];
-        modelData.textureCoords.push_back(texture.x / subTextureSize);
-        modelData.textureCoords.push_back(texture.y / subTextureSize);
+        modelData.textureCoords.push_back(texture.x);
+        modelData.textureCoords.push_back(texture.y);
     }
 
     return modelData;

@@ -180,6 +180,8 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
   <ItemGroup>
     <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
+    <ClInclude Include="src\rendering\entities\AnimatedEntity.h" />
+    <ClInclude Include="src\rendering\RenderEngine.h" />
     <ClInclude Include="src\input\GLFWInputManager.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="include\glad\glad.h" />
@@ -650,6 +652,13 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
   <ItemGroup>
     <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\input\GLFWInputManager.cpp" />
+    <ClCompile Include="src\rendering\entities\AnimatedEntity.cpp" />
+    <ClCompile Include="src\rendering\entities\Camera.cpp" />
+    <ClCompile Include="src\rendering\entities\Entity.cpp" />
+    <ClCompile Include="src\rendering\entities\GuiEntity.cpp" />
+    <ClCompile Include="src\rendering\models\RawModel.cpp" />
+    <ClCompile Include="src\rendering\models\Vertex.cpp" />
+    <ClCompile Include="src\rendering\RenderEngine.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="include\glm\detail\glm.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

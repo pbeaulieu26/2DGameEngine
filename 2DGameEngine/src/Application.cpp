@@ -17,6 +17,7 @@
 #include "rendering/entities/Camera.h"
 #include "rendering/models/ModelData.h"
 #include "rendering/models/loaders/ObjFileLoader.h"
+#include "rendering/RenderEngine.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -61,18 +62,14 @@ namespace Engine {
     {
         Camera camera{ glm::vec2(0.4, 0.0), 0.0f };
 
-        Renderer2D renderer2D;
-        TextureLoader textureLoader;
-        VertexObjectLoader vertexObjectLoader;
-        AnimationUpdater animationUpdater;
+        RenderEngine renderEngine;
 
-        ModelData modelData = ObjFileLoader::loadOBJ("res/hex.obj", 1);
-        RawModel hex = vertexObjectLoader.loadToVAO(modelData);
-        AnimatedTexturedModel animatedTexturedModel{ hex, textureLoader.loadTexture("res/forest_texture.png"), 0, 0, 4, 16 };
-        Entity entity1{ animatedTexturedModel.texturedModel, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
-        Entity entity2{ animatedTexturedModel.texturedModel, glm::vec2(0.35, 0.0), 0.0, glm::vec2(0.2, 0.2) };
-        std::unordered_map<AnimatedTexturedModel, std::vector<Entity>, AnimatedTexturedModel::Hasher> entities;
-        animationUpdater.bindAnimatedTextureData(animatedTexturedModel.animatedTextureData);
+        TexturedModel textureModel = renderEngine.createTexturedModel("res/hex.obj", "res/forest_texture.png");
+        AnimatedEntity entity1{ AnimatedTexturedModel{textureModel, 0, 0, 4, 16}, glm::vec2(0.0, 0.0), 0.0, glm::vec2(0.2, 0.2) };
+        AnimatedEntity entity2{ AnimatedTexturedModel{textureModel, 0, 0, 4, 16}, glm::vec2(0.35, 0.0), 0.0, glm::vec2(0.2, 0.2) };
+
+        renderEngine.registerAnimatedEntity(entity1);
+        renderEngine.registerAnimatedEntity(entity2);
 
         int counter = 0;
 
@@ -84,17 +81,8 @@ namespace Engine {
             m_eventDispatcher.dispatchEvents();
 
             // update window
-
-            entities.clear();
-            entities[animatedTexturedModel] = std::vector<Entity>{ entity1, entity2 };
-
-            renderer2D.render(entities, camera);
-
-            if (++counter == 6)
-            {
-                animationUpdater.update();
-                counter = 0;
-            }
+            bool updateAnimation = !(bool) (++counter %= 6);
+            renderEngine.renderEntities(camera, updateAnimation);
 
             DisplayManager::updateDisplay();
 

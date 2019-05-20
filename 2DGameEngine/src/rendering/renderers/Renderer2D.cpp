@@ -41,14 +41,21 @@ namespace Engine {
             const TexturedModel& texturedModel = iter.first;
             const std::vector<Entity>& batch = iter.second;
             prepareTexturedModel(texturedModel);
-            processEntities(batch);
+
+            for (const Entity& entity : batch)
+            {
+                glm::mat4 transformationMatrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
+                m_shader.loadTransformationMatrix(transformationMatrix);
+               glDrawElements(GL_TRIANGLES, entity.texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
+            }
+
             unbindTexturedModel();
         }
 
         m_shader.stop();
     }
 
-    void Renderer2D::render(const std::unordered_map<AnimatedTexturedModel, std::vector<Entity>, AnimatedTexturedModel::Hasher>& entities, const Camera& camera)
+    void Renderer2D::render(const std::unordered_map<TexturedModel, std::vector<AnimatedEntity>, TexturedModel::Hasher>& entities, const Camera& camera)
     {
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
@@ -60,25 +67,22 @@ namespace Engine {
 
         for (auto iter : entities)
         {
-            const AnimatedTexturedModel& animatedTexturedModel = iter.first;
-            const std::vector<Entity>& batch = iter.second;
-            prepareTexturedModel(animatedTexturedModel.texturedModel);
-            m_shader.loadSubTextureParams(animatedTexturedModel.animatedTextureData);
-            processEntities(batch);
+            const TexturedModel& texturedModel = iter.first;
+            const std::vector<AnimatedEntity>& batch = iter.second;
+            prepareTexturedModel(texturedModel);
+        
+            for (const AnimatedEntity& animatedEntity : batch)
+            {
+                m_shader.loadSubTextureParams(animatedEntity.animatedTexturedModel.animatedTextureData);
+                glm::mat4 transformationMatrix = Maths::createTransformationMatrix(animatedEntity.position, animatedEntity.rotation, animatedEntity.scale);
+                m_shader.loadTransformationMatrix(transformationMatrix);
+                glDrawElements(GL_TRIANGLES, texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
+            }
+
             unbindTexturedModel();
         }
-
+  
         m_shader.stop();
-    }
-
-    void Renderer2D::processEntities(const std::vector<Entity>& entities)
-    {
-        for (const Entity& entity : entities)
-        {
-            glm::mat4 transformationMatrix = Maths::createTransformationMatrix(entity.position, entity.rotation, entity.scale);
-            m_shader.loadTransformationMatrix(transformationMatrix);
-            glDrawElements(GL_TRIANGLES, entity.texturedModel.rawModel.vertexCount, GL_UNSIGNED_INT, 0);
-        }
     }
 
     void Renderer2D::prepareTexturedModel(const TexturedModel& texturedModel)
