@@ -4,24 +4,11 @@
 
 namespace Engine {
 
-    TransformComponent::TransformComponent()
-        : m_position()
+    void TransformComponent::initialize()
     {
-    }
-
-    TransformComponent::TransformComponent(int xPos, int yPos, double rotation)
-        : m_position(xPos, yPos), m_rotation(rotation)
-    {
-    }
-
-    TransformComponent::TransformComponent(const Vector2d<int> position, double rotation)
-        : m_position(position), m_rotation(rotation)
-    {
-    }
-
-
-    TransformComponent::~TransformComponent()
-    {
+        m_position = Vector2d<int>(0, 0);
+        m_rotation = 0;
+        m_scale = 1;
     }
 
 }

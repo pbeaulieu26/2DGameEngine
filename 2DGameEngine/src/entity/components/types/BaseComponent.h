@@ -1,5 +1,7 @@
 #pragma once
 
+#include "core/Core.h"
+
 
 namespace Engine {
 
@@ -7,20 +9,20 @@ namespace Engine {
 
     class ENGINE_API BaseComponent
     {
-
     public:
+        inline ComponentId getId() { return id; }
 
         inline void activate() { m_isActivated = true; };
         inline void deactivate() { m_isActivated = false; };
 
         inline bool isActivated() { return m_isActivated; }
 
-    protected:
-
-        BaseComponent() { m_isActivated = true; };
+        friend class ComponentManager;
 
     private:
+        BaseComponent();
 
+        ComponentId id;
         bool m_isActivated;
 
     };

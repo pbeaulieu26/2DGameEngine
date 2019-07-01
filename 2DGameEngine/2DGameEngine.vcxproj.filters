@@ -37,6 +37,7 @@
     <ClCompile Include="src\entity\EntityManager.cpp" />
     <ClCompile Include="src\entity\components\ComponentManager.cpp" />
     <ClCompile Include="src\entity\components\types\TransformComponent.cpp" />
+    <ClCompile Include="src\entity\components\types\BaseComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\events\ApplicationEvent.h" />
@@ -382,6 +383,9 @@
     <ClInclude Include="src\entity\components\componentsystem\BaseComponentSystem.h" />
     <ClInclude Include="src\entity\components\types\TransformComponent.h" />
     <ClInclude Include="src\entity\components\types\BaseComponent.h" />
+    <ClInclude Include="src\entity\components\types\DataComponent.h" />
+    <ClInclude Include="src\entity\components\types\BehaviorComponent.h" />
+    <ClInclude Include="src\entity\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />

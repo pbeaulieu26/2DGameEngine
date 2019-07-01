@@ -1,9 +1,9 @@
 #pragma once
 
+#include "Entity.h"
+
 
 namespace Engine {
-
-    typedef int EntityId;
 
     class ENGINE_API EntityManager
     {
