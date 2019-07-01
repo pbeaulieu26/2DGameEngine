@@ -4,9 +4,11 @@
 namespace Engine {
 
     template<typename TComponent>
-    class BaseComponentSystem : public IComponentSystem<TComponent>
+    class BaseComponentSystem
     {
     public:
+        virtual void updateComponents() = 0;
+
         void createComponent(int entityId) override
         {
             m_componentMap[entityId] = std::make_shared<TComponent>();

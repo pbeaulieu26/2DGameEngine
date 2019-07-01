@@ -381,7 +381,6 @@
     <ClInclude Include="src\entity\Entity.h" />
     <ClInclude Include="src\entity\EntityManager.h" />
     <ClInclude Include="src\entity\components\ComponentManager.h" />
-    <ClInclude Include="src\entity\components\componentsystem\IComponentSystem.h" />
     <ClInclude Include="src\entity\components\BaseComponent.h" />
     <ClInclude Include="src\entity\components\componentsystem\BaseComponentSystem.h" />
   </ItemGroup>
