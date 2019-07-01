@@ -34,9 +34,9 @@
     <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
     <ClCompile Include="src\rendering\utils\Maths.cpp" />
     <ClCompile Include="src\rendering\entities\RenderEntity.cpp" />
-    <ClCompile Include="src\entity\components\TransformComponent.cpp" />
     <ClCompile Include="src\entity\EntityManager.cpp" />
     <ClCompile Include="src\entity\components\ComponentManager.cpp" />
+    <ClCompile Include="src\entity\components\types\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\events\ApplicationEvent.h" />
@@ -377,12 +377,12 @@
     <ClInclude Include="src\rendering\utils\Maths.h" />
     <ClInclude Include="src\utils\Vector2d.h" />
     <ClInclude Include="src\rendering\entities\RenderEntity.h" />
-    <ClInclude Include="src\entity\components\TransformComponent.h" />
     <ClInclude Include="src\entity\Entity.h" />
     <ClInclude Include="src\entity\EntityManager.h" />
     <ClInclude Include="src\entity\components\ComponentManager.h" />
-    <ClInclude Include="src\entity\components\BaseComponent.h" />
     <ClInclude Include="src\entity\components\componentsystem\BaseComponentSystem.h" />
+    <ClInclude Include="src\entity\components\types\TransformComponent.h" />
+    <ClInclude Include="src\entity\components\types\BaseComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />

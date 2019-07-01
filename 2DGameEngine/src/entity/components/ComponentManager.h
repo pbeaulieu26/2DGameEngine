@@ -1,5 +1,5 @@
 #pragma once
-#include "BaseComponent.h"
+#include "types/BaseComponent.h"
 #include "entity/Entity.h"
 
 
@@ -10,7 +10,10 @@ namespace Engine {
 
     public:
 
-        static ComponentManager& getInstance();
+        static ComponentManager& getInstance() 
+        {
+            return m_instance;
+        };
 
     private:
 

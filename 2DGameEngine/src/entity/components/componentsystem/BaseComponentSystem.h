@@ -1,5 +1,7 @@
 #pragma once
 
+#include "entity/Entity.h"
+
 
 namespace Engine {
 
@@ -9,17 +11,17 @@ namespace Engine {
     public:
         virtual void updateComponents() = 0;
 
-        void createComponent(int entityId) override
+        void createComponent(EntityId entityId) override
         {
             m_componentMap[entityId] = std::make_shared<TComponent>();
         }
 
-        void removeComponent(int entityId) override
+        void removeComponent(EntityId entityId) override
         {
             m_componentMap.erase(entityId);
         }
 
-        std::shared_ptr<TComponent> getComponent(int entityId) override
+        std::shared_ptr<TComponent> getComponent(EntityId entityId) override
         {
             auto it = m_componentMap.find(entityId);
             return it != m_componentMap.end() ? (*it).second : nullptr;
