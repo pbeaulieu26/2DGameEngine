@@ -7,7 +7,8 @@
 #include "input/KeyCodes.h"
 #include "input/MouseCodes.h"
 
-#include "entity/Entity.h"
+#include "entity/EntityManager.h"
+#include "entity/components/ComponentManager.h"
 #include "entity/components/types/BaseComponent.h"
 #include "entity/components/types/TransformComponent.h"
 

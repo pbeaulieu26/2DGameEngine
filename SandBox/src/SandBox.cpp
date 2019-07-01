@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Sandbox.h"
-#include "ExampleEntity.h"
 
 
 Engine::Application* Engine::CreateApplication()

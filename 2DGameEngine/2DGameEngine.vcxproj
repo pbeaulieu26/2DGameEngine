@@ -181,7 +181,6 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\entity\components\ComponentManager.h" />
     <ClInclude Include="src\entity\components\componentsystem\BaseComponentSystem.h" />
     <ClInclude Include="src\entity\EntityManager.h" />
-    <ClInclude Include="src\entity\Entity.h" />
     <ClInclude Include="src\entity\components\types\BaseComponent.h" />
     <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />

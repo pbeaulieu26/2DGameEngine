@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ExampleEntity.h"
-
 #include <Engine.h>
 
 
@@ -21,9 +19,5 @@ public:
     void onKeyReleasedEvent(const Engine::KeyReleasedEvent& event) override;
 
     void onAppUpdateEvent(const Engine::AppUpdateEvent & event) override;
-
-private:
-
-    std::shared_ptr<ExampleEntity> m_player;
 
 };
