@@ -29,7 +29,8 @@
 namespace Engine {
 
     Application::Application()
-        : m_eventDispatcher(EventDispatcher::getInstance())
+        : m_eventDispatcher(EventDispatcher::getInstance()),
+          m_isRunning(false)
     {
         Log::Init();
         LOG_CORE_INFO("Logger initialized");
