@@ -178,12 +178,12 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\world\entity\Entity.h" />
-    <ClInclude Include="src\world\scene\Scene.h" />
-    <ClInclude Include="src\world\entity\components\AnimationComponent.h" />
-    <ClInclude Include="src\world\entity\components\CollisionComponent.h" />
-    <ClInclude Include="src\world\entity\components\BaseComponent.h" />
-    <ClInclude Include="src\world\entity\components\RenderComponent.h" />
+    <ClInclude Include="src\entity\components\ComponentManager.h" />
+    <ClInclude Include="src\entity\components\componentsystem\BaseComponentSystem.h" />
+    <ClInclude Include="src\entity\components\componentsystem\IComponentSystem.h" />
+    <ClInclude Include="src\entity\EntityManager.h" />
+    <ClInclude Include="src\entity\Entity.h" />
+    <ClInclude Include="src\entity\components\BaseComponent.h" />
     <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
     <ClInclude Include="src\rendering\entities\AnimatedEntity.h" />
@@ -521,8 +521,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClInclude Include="src\rendering\textures\animations\AnimationUpdater.h" />
     <ClInclude Include="src\rendering\textures\TextureLoader.h" />
     <ClInclude Include="src\rendering\utils\Maths.h" />
-    <ClInclude Include="src\world\entity\components\TransformComponent.h" />
-    <ClInclude Include="src\world\World.h" />
+    <ClInclude Include="src\entity\components\TransformComponent.h" />
     <ClInclude Include="src\utils\Vector2d.h" />
   </ItemGroup>
   <ItemGroup>
@@ -659,11 +658,8 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <None Include="include\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\world\entity\Entity.cpp" />
-    <ClCompile Include="src\world\scene\Scene.cpp" />
-    <ClCompile Include="src\world\entity\components\AnimationComponent.cpp" />
-    <ClCompile Include="src\world\entity\components\RenderComponent.cpp" />
-    <ClCompile Include="src\world\entity\components\CollisionComponent.cpp" />
+    <ClCompile Include="src\entity\components\ComponentManager.cpp" />
+    <ClCompile Include="src\entity\EntityManager.cpp" />
     <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\input\GLFWInputManager.cpp" />
     <ClCompile Include="src\rendering\entities\AnimatedEntity.cpp" />
@@ -727,8 +723,7 @@ copy /y bin\Debug_Win32\2DGameEngine\2DGameEngine.dll bin\Debug_Win32\SandBox\2D
     <ClCompile Include="src\rendering\textures\animations\AnimationUpdater.cpp" />
     <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
     <ClCompile Include="src\rendering\utils\Maths.cpp" />
-    <ClCompile Include="src\world\entity\components\TransformComponent.cpp" />
-    <ClCompile Include="src\world\World.cpp" />
+    <ClCompile Include="src\entity\components\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />

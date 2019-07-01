@@ -14,6 +14,5 @@ int main(int argc, char** argv)
     app->run();
     delete app;
 
-
     LOG_CORE_INFO("Engine terminated");
 }

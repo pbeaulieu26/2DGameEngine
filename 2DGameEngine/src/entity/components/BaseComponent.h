@@ -3,8 +3,12 @@
 
 namespace Engine {
 
+    typedef int ComponentId;
+
     class ENGINE_API BaseComponent
     {
+
+    public:
 
         inline void activate() { m_isActivated = true; };
         inline void deactivate() { m_isActivated = false; };
@@ -20,8 +24,6 @@ namespace Engine {
         bool m_isActivated;
 
     };
-
-    #define COMPONENT_INFO(type) static std::size_t getStaticId() { return std::hash<std::string>{}(type); };
 
 }
 

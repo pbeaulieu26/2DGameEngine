@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\world\entity\Entity.cpp" />
-    <ClCompile Include="src\world\scene\Scene.cpp" />
-    <ClCompile Include="src\world\entity\components\AnimationComponent.cpp" />
-    <ClCompile Include="src\world\entity\components\RenderComponent.cpp" />
-    <ClCompile Include="src\world\entity\components\CollisionComponent.cpp" />
     <ClCompile Include="src\events\EventDispatcher.cpp" />
     <ClCompile Include="src\input\GLFWInputManager.cpp" />
     <ClCompile Include="src\rendering\entities\AnimatedEntity.cpp" />
@@ -38,17 +33,12 @@
     <ClCompile Include="src\rendering\textures\animations\AnimationUpdater.cpp" />
     <ClCompile Include="src\rendering\textures\TextureLoader.cpp" />
     <ClCompile Include="src\rendering\utils\Maths.cpp" />
-    <ClCompile Include="src\world\entity\components\TransformComponent.cpp" />
-    <ClCompile Include="src\world\World.cpp" />
     <ClCompile Include="src\rendering\entities\RenderEntity.cpp" />
+    <ClCompile Include="src\entity\components\TransformComponent.cpp" />
+    <ClCompile Include="src\entity\EntityManager.cpp" />
+    <ClCompile Include="src\entity\components\ComponentManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\world\entity\Entity.h" />
-    <ClInclude Include="src\world\scene\Scene.h" />
-    <ClInclude Include="src\world\entity\components\AnimationComponent.h" />
-    <ClInclude Include="src\world\entity\components\CollisionComponent.h" />
-    <ClInclude Include="src\world\entity\components\BaseComponent.h" />
-    <ClInclude Include="src\world\entity\components\RenderComponent.h" />
     <ClInclude Include="src\events\ApplicationEvent.h" />
     <ClInclude Include="src\events\EventDispatcher.h" />
     <ClInclude Include="src\rendering\entities\AnimatedEntity.h" />
@@ -385,10 +375,15 @@
     <ClInclude Include="src\rendering\textures\animations\AnimationUpdater.h" />
     <ClInclude Include="src\rendering\textures\TextureLoader.h" />
     <ClInclude Include="src\rendering\utils\Maths.h" />
-    <ClInclude Include="src\world\entity\components\TransformComponent.h" />
-    <ClInclude Include="src\world\World.h" />
     <ClInclude Include="src\utils\Vector2d.h" />
     <ClInclude Include="src\rendering\entities\RenderEntity.h" />
+    <ClInclude Include="src\entity\components\TransformComponent.h" />
+    <ClInclude Include="src\entity\Entity.h" />
+    <ClInclude Include="src\entity\EntityManager.h" />
+    <ClInclude Include="src\entity\components\ComponentManager.h" />
+    <ClInclude Include="src\entity\components\componentsystem\IComponentSystem.h" />
+    <ClInclude Include="src\entity\components\BaseComponent.h" />
+    <ClInclude Include="src\entity\components\componentsystem\BaseComponentSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GLFW\glfw3.lib" />
